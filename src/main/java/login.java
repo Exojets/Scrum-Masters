@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import  java.io.File.isFile;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,7 +17,8 @@ import java.util.logging.Logger;
  * @author Groe
  */
 public class login extends javax.swing.JFrame {
-
+    //test class, this is how they're implemented in a jframe
+    NewClass test= new NewClass();
     /**
      * Creates new form login
      */
@@ -40,6 +40,7 @@ public class login extends javax.swing.JFrame {
         LoginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         RegisterButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -68,6 +69,13 @@ public class login extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -80,20 +88,31 @@ public class login extends javax.swing.JFrame {
                 .addGap(54, 54, 54))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addGap(108, 108, 108))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))
+                        .addGap(108, 108, 108))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(32, 32, 32)
                 .addComponent(jLabel1)
-                .addGap(47, 47, 47)
-                .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(47, 47, 47)
+                        .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(61, 61, 61)
+                        .addComponent(jButton1)))
+                .addGap(23, 23, 23)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -121,7 +140,7 @@ public class login extends javax.swing.JFrame {
                  String text = Buff.readLine();
                  if(text.equals(Password)){
                      dispose();
-                     new MainPage().setVisible(true); // Main Form to show after the Login Form..
+                     new MainPage().setVisible(true); // Main Form to show after the Login Form.
                  }
              } catch (FileNotFoundException ex) {
                  Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
@@ -136,7 +155,7 @@ public class login extends javax.swing.JFrame {
              }
        
        }
-        ////////////////////Todo: add login verification
+        ////////////////////Todo: add login verification via accounts class
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
@@ -145,13 +164,17 @@ public class login extends javax.swing.JFrame {
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
         // TODO add your handling code here:
+        //gets the username and password fields 
         String Username=UsernameField.getText();
         String Password=PasswordField.getText();
+        //converts username into an easily accessible text file, format username.txt
         try {
       File myObj = new File(Username+".txt");
+      //attempts to create the username file. if it succeeds, account created. If it fails, user already exists
       if (myObj.createNewFile()) {
         System.out.println("File created: " + myObj.getName());
         FileWriter myWriter = new FileWriter(Username+".txt");
+        //writes the password to the first line
       myWriter.write(Password);
       myWriter.close();
       } else {
@@ -162,6 +185,12 @@ public class login extends javax.swing.JFrame {
     }
         
     }//GEN-LAST:event_RegisterButtonActionPerformed
+
+    //this is just for testing things to make sure they work
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        jButton1.setText(test.hi);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,6 +232,7 @@ public class login extends javax.swing.JFrame {
     private javax.swing.JTextField PasswordField;
     private javax.swing.JButton RegisterButton;
     private javax.swing.JTextField UsernameField;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }
