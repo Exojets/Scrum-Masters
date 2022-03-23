@@ -17,9 +17,8 @@ public class Account {
     public Account(String Username) throws Exception {
         File file = new File((Username + ".txt"));
         Scanner sc = new Scanner(file);
-        sc.nextLine();
+        password = sc.nextLine();
         reservations = sc.nextLine();
-        sc.nextLine();
         notifications = sc.nextLine();
     }
     
