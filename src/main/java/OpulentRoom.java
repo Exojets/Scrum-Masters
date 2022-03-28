@@ -301,7 +301,7 @@ public class OpulentRoom extends javax.swing.JFrame {
     private void UpdateAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailabilityActionPerformed
         // TODO add your handling code here:
         String text = MonthDesired.getText();
-       int SearchPrice = Integer.parseInt(text);
+       int MonthtoCheck = Integer.parseInt(text);
        int availability=0;
        //this is bad and I know it's bad but Swing doesn't have an easy way to convert a bunch of jLabels into an array and I need time to figure out how that works.
        if (availability==0){

@@ -1,5 +1,0 @@
-Password
-1 1 1 / 2 6 2 / 3 16 1 / END /
-Notifications
-
-//We'll need to establish how many room types we support and what each is numbered as

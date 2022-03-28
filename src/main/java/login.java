@@ -1,4 +1,5 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -128,33 +129,39 @@ public class login extends javax.swing.JFrame {
         // TODO add your handling code here:
          String Username=UsernameField.getText();
         String Password=PasswordField.getText();
-        String Filer=Username+".txt";
-       File TempFileStorage=null;
-       TempFileStorage=new File(Filer);
-       if (TempFileStorage.isFile())
-       {
-            BufferedReader Buff = null;
-             try {
-                 //open the file
-                 Buff = new BufferedReader(new FileReader(Filer)); 
-                 String text = Buff.readLine();
-                 if(text.equals(Password)){
-                     dispose();
-                     new MainPage().setVisible(true); // Main Form to show after the Login Form.
-                 }
-             } catch (FileNotFoundException ex) {
-                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-             } catch (IOException ex) {
-                 Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
-             } finally {
+        if (Username.length()>0&&Password.length()>0){
+           String Filer=Username+".txt";
+           File TempFileStorage=null;
+           TempFileStorage=new File(Filer);
+           if (TempFileStorage.isFile())
+           {
+                BufferedReader Buff = null;
                  try {
-                     Buff.close();
+                     //open the file
+                     Buff = new BufferedReader(new FileReader(Filer)); 
+                     String text = Buff.readLine();
+                     if(text.equals(Password)){
+                         dispose();
+                         try {
+                             new MainPage(Username).setVisible(true); // Main Form to show after the Login Form.
+                         } catch (Exception ex) {
+                             Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                         }
+                     }
+                 } catch (FileNotFoundException ex) {
+                     Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
                  } catch (IOException ex) {
                      Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                 } finally {
+                     try {
+                         Buff.close();
+                     } catch (IOException ex) {
+                         Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
+                     }
                  }
-             }
-       
-       }
+
+           }
+        }
         ////////////////////Todo: add login verification via accounts class
     }//GEN-LAST:event_LoginButtonActionPerformed
 
@@ -168,22 +175,27 @@ public class login extends javax.swing.JFrame {
         String Username=UsernameField.getText();
         String Password=PasswordField.getText();
         //converts username into an easily accessible text file, format username.txt
-        try {
-      File myObj = new File(Username+".txt");
-      //attempts to create the username file. if it succeeds, account created. If it fails, user already exists
-      if (myObj.createNewFile()) {
-        System.out.println("File created: " + myObj.getName());
-        FileWriter myWriter = new FileWriter(Username+".txt");
-        //writes the password to the first line
-      myWriter.write(Password);
-      myWriter.close();
-      } else {
-        System.out.println("File already exists.");
-      }
-    } catch (IOException e) {
-      System.out.println("An error occurred.");
-    }
-        
+        if (Username.length()>0&&Password.length()>0){
+            try {
+              File myObj = new File(Username+".txt");
+              //attempts to create the username file. if it succeeds, account created. If it fails, user already exists
+              if (myObj.createNewFile()) {
+                System.out.println("File created: " + myObj.getName());
+                FileWriter myWriter = new FileWriter(Username+".txt");
+                //writes the password to the first line
+              BufferedWriter bw = new BufferedWriter(myWriter);
+              bw.write(Password);
+              bw.newLine();
+              bw.newLine();
+              bw.newLine();
+              bw.close();
+              } else {
+                System.out.println("File already exists.");
+              }
+            } catch (IOException e) {
+              System.out.println("An error occurred.");
+            }
+        }
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     //this is just for testing things to make sure they work
