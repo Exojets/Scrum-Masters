@@ -14,9 +14,10 @@ import java.util.Scanner;
 public class Account {
     private String username, password, reservations, notifications;
     
-    public Account(String Username) throws Exception {
-        File file = new File((Username + ".txt"));
+    public Account(String name) throws Exception {
+        File file = new File((name + ".txt"));
         Scanner sc = new Scanner(file);
+        username = name;
         password = sc.nextLine();
         reservations = sc.nextLine();
         notifications = sc.nextLine();
