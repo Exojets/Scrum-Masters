@@ -18,8 +18,6 @@ import java.util.logging.Logger;
  * @author Groe
  */
 public class login extends javax.swing.JFrame {
-    //test class, this is how they're implemented in a jframe
-    NewClass test= new NewClass();
     /**
      * Creates new form login
      */
@@ -126,13 +124,18 @@ public class login extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
-        // TODO add your handling code here:
+        // retrieves username and password from fields
          String Username=UsernameField.getText();
         String Password=PasswordField.getText();
+        //ensures that username and password fields weren't empty
         if (Username.length()>0&&Password.length()>0){
+            //
            String Filer=Username+".txt";
            File TempFileStorage=null;
            TempFileStorage=new File(Filer);
+           //checks if the username exists in database
+           // If it does, compares password given to database. If it matches, opens main window and sends username as parameter
+           //if either fail, do nothing
            if (TempFileStorage.isFile())
            {
                 BufferedReader Buff = null;
@@ -141,9 +144,10 @@ public class login extends javax.swing.JFrame {
                      Buff = new BufferedReader(new FileReader(Filer)); 
                      String text = Buff.readLine();
                      if(text.equals(Password)){
+                         //close window and instantiate mainpage with parameter username
                          dispose();
                          try {
-                             new MainPage(Username).setVisible(true); // Main Form to show after the Login Form.
+                             new MainPage(Username).setVisible(true); 
                          } catch (Exception ex) {
                              Logger.getLogger(login.class.getName()).log(Level.SEVERE, null, ex);
                          }
@@ -160,21 +164,20 @@ public class login extends javax.swing.JFrame {
                      }
                  }
 
-           }
+            }
         }
-        ////////////////////Todo: add login verification via accounts class
     }//GEN-LAST:event_LoginButtonActionPerformed
 
     private void UsernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UsernameFieldActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_UsernameFieldActionPerformed
 
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        // TODO add your handling code here:
+
         //gets the username and password fields 
         String Username=UsernameField.getText();
         String Password=PasswordField.getText();
-        //converts username into an easily accessible text file, format username.txt
+        //
         if (Username.length()>0&&Password.length()>0){
             try {
               File myObj = new File(Username+".txt");
@@ -182,7 +185,7 @@ public class login extends javax.swing.JFrame {
               if (myObj.createNewFile()) {
                 System.out.println("File created: " + myObj.getName());
                 FileWriter myWriter = new FileWriter(Username+".txt");
-                //writes the password to the first line
+                //writes the password to the first line and initializes the following lines to an empty newline for later use by account class
               BufferedWriter bw = new BufferedWriter(myWriter);
               bw.write(Password);
               bw.newLine();
@@ -199,9 +202,9 @@ public class login extends javax.swing.JFrame {
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
     //this is just for testing things to make sure they work
+    ////////////////////////////////////////////////////////////////////
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        jButton1.setText(test.hi);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
