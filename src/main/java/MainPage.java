@@ -16,19 +16,26 @@ public class MainPage extends javax.swing.JFrame {
         initComponents();
         //code snippet to show managers their special button
         //need to find a place to put the flag for managerliness
-        Boolean ManagerAccount=true;
+       Boolean ManagerAccount=true;
         if (ManagerAccount!=true){
             ManagerRoomReportButton.setVisible(false);
         }
     }
     public MainPage(String Username) throws Exception {
         initComponents();
+        //////////////temporary until button will be used
+        CheckReservationsAndNotifications.setVisible(false);
+        ChangeReservationDate.setVisible(false);
+        RoomCancelButton.setVisible(false);
+        MonthCancelInput.setVisible(false);
+        DayCancelInput.setVisible(false);
+        RoomSelectCancelInput.setVisible(false);
         User=new Account(Username);
         //code snippet to show managers their special button
         //need to find a place to put the flag for managerliness
         Boolean ManagerAccount=true;
         if (ManagerAccount!=true){
-            ManagerRoomReportButton.setVisible(false);
+          ManagerRoomReportButton.setVisible(false);
         }
     }
 
@@ -120,7 +127,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        ChangeReservationDate.setText("Cancel Reservation");
+        ChangeReservationDate.setText("ChangeReservation");
         ChangeReservationDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChangeReservationDateActionPerformed(evt);
@@ -219,21 +226,20 @@ public class MainPage extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//searches for rooms that cost less than budget given
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
-        // TODO add your handling code here:
-        //converts text to an integer
+      //converts text to an integer
        String text = SearchCost.getText();
        System.out.print(User.passwordGet());
        int SearchPrice = Integer.parseInt(text);
        //should be searchprice>=Roomcost, but this suffices for my test
+       ////////////////////////////////////////add other rooms when done
        if (6>=SearchPrice){
        new OpulentRoom().setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
-
+//opens the current reservations and notifications for account, then clears notifications
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
-        // TODO add your handling code here:
         //doesn't exist yet but should work when it does
          new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
          User.notificationsSet("");
