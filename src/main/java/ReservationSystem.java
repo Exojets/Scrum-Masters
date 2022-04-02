@@ -1,4 +1,3 @@
-package com.mycompany.makereservation;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -13,46 +12,40 @@ package com.mycompany.makereservation;
  */
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.Scanner;
  
     /*modifying text files
     makeReservation(roomType,date,username,availability)
     */
 public class ReservationSystem {
+    Account accountTemp;
+    Room roomTemp;
     
-    private String username, availability, hotelRoom;
-    private int cost;
-    
-    public String usernameGet(){
-        return username;
-    }
-    
-    public String availabilityGet(){
-        return availability;
-    }
-    
-    public String hotelroomGet(){
-        return hotelRoom;
-    }
-    
-    public int costGet(){
-        return cost;
-    }
-    
-    public void makeReservation() throws Exception{
-        String name = username;
-        String room = hotelRoom;
-        File userfile = new File((name +".txt"));
-        File roomfile = new File (room+".txt");
-        Scanner userScan = new Scanner(userfile);
-        Scanner roomScan = new Scanner(roomfile);
-        
+     ReservationSystem(){
         
     }
+     ReservationSystem(Account a){
+        a = accountTemp;
+    }
+
+     //account will be a string
+     //room would be 2 int for month and for day
+    public void makeReservation(Room r) throws Exception{
+        r=roomTemp;
+        String name = accountTemp.reservationsGet();
+        File userfile = new File((accountTemp.usernameGet()+".txt"));
+        FileWriter writeUserfile = new FileWriter(accountTemp.usernameGet()+".txt");
+        userfile.delete();
+        userfile.createNewFile();
+        writeUserfile.write(roomTemp.roomType()+""+roomTemp.getMonth()+""+roomTemp.getDay());
+        writeUserfile.close();
+       
+    }
     
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
 
        
     
-    }
+    //}
 }
