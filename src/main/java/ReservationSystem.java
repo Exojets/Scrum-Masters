@@ -31,15 +31,17 @@ public class ReservationSystem {
 
      //account will be a string
      //room would be 2 int for month and for day
-    public void makeReservation(Room r) throws Exception{
+    public void makeReservation(Room r, int month, int day) throws Exception{
         r=roomTemp;
-        String name = accountTemp.reservationsGet();
+        String userName = accountTemp.usernameGet();
+        String password = accountTemp.passwordGet();
+        String oldReservation = accountTemp.reservationsGet();
         File userfile = new File((accountTemp.usernameGet()+".txt"));
-        FileWriter writeUserfile = new FileWriter(accountTemp.usernameGet()+".txt");
+        FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
         userfile.delete();
         userfile.createNewFile();
-        writeUserfile.write(roomTemp.roomType()+""+roomTemp.getMonth()+""+roomTemp.getDay());
-        writeUserfile.close();
+        writeUserFile.write(oldReservation + " "+ roomTemp.roomType() +" "+month +" / "+ day);
+        writeUserFile.close();
        
     }
     
