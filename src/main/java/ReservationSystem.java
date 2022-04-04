@@ -34,9 +34,9 @@ public class ReservationSystem {
     public String makeReservation(Room r, int month, int day, int roomNumber) throws Exception{
         r=roomTemp;
         String returnValue = "No Reservation Made";
-       if (roomTemp.availabilityGet() > -1){
-            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " "+ roomNumber +" "+month +" / "+ day+"");
-            //accountTemp.noti
+       if (roomTemp.availabilityGet(month , day) > -1){
+            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + month +" " + day+" " + roomNumber +"");
+            //accountTemp.notificationSet(accountTemp.notificationGet()+ "There is a new notification!");
             File userfile = new File((accountTemp.usernameGet()+".txt"));
             File roomfile = new File ("Room"+roomNumber+".txt");
             FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
