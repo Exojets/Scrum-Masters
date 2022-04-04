@@ -31,23 +31,42 @@ public class ReservationSystem {
 
      //account will be a string
      //room would be 2 int for month and for day
-    public void makeReservation(Room r, int month, int day) throws Exception{
+    public void makeReservation(Room r, int month, int day, int roomNumber) throws Exception{
         r=roomTemp;
-        String userName = accountTemp.usernameGet();
-        String password = accountTemp.passwordGet();
-        String oldReservation = accountTemp.reservationsGet();
-        File userfile = new File((accountTemp.usernameGet()+".txt"));
-        FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
-        userfile.delete();
-        userfile.createNewFile();
-        writeUserFile.write(oldReservation + " "+ roomTemp.roomType() +" "+month +" / "+ day);
-        writeUserFile.close();
-       
-    }
-    
-    //public static void main(String[] args) {
 
+       if (roomTemp.availabilityGet() > -1){
+            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " "+ roomNumber +" "+month +" / "+ day+"");
+            File userfile = new File((accountTemp.usernameGet()+".txt"));
+            File roomfile = new File ("Room"+roomNumber+".txt");
+            FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
+            FileWriter writeRoomFile = new FileWriter("Room"+roomNumber+".txt");
+            userfile.delete();
+            userfile.createNewFile();
+            roomfile.delete();
+            roomfile.createNewFile();
+            writeUserFile.write(accountTemp.passwordGet()+"\n");
+            writeUserFile.write(accountTemp.reservationsGet()+"\n");
+            writeUserFile.write(accountTemp.notificationsGet()+"\n");
+            writeUserFile.close();
+        
+            writeRoomFile.write(roomTemp.costGet()+"\n");
+            writeRoomFile.write(roomTemp.amenititesGet()+"\n");
+        
+            roomTemp.availabilitySet(month,day, -1);
+        
+            for (int monthIndex = 0; monthIndex < 12 ;monthIndex++) {
+                for (int dayIndex = 0; dayIndex < 31; dayIndex++){
+                    writeRoomFile.write(roomTemp.availabilityGet(monthIndex,dayIndex)+" ");
+                }
+            }
+            writeRoomFile.close();
+       
+        }
+    }
        
     
-    //}
+    /* user text password, reservation, notifications
+    room text cost amenities, availabilities
+    */
+
 }
