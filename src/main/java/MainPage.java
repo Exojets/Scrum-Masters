@@ -9,21 +9,19 @@
  */
 public class MainPage extends javax.swing.JFrame {
      Account User;
-    /**
-     * Creates new form MainPage
-     */
+     room Room1;
+     room Room2;
+     room Room3;
+     
     public MainPage() {
         initComponents();
-        //code snippet to show managers their special button
-        //need to find a place to put the flag for managerliness
-       Boolean ManagerAccount=true;
-        if (ManagerAccount!=true){
-            ManagerRoomReportButton.setVisible(false);
-        }
     }
     public MainPage(String Username) throws Exception {
         initComponents();
-        //////////////temporary until button will be used
+        Room1 = new room("room1");
+        Room2 = new room("room2");
+        Room3 = new room("room3");
+        //////////////temporary until buttons will be used
         CheckReservationsAndNotifications.setVisible(false);
         ChangeReservationDate.setVisible(false);
         RoomCancelButton.setVisible(false);
@@ -33,7 +31,7 @@ public class MainPage extends javax.swing.JFrame {
         User=new Account(Username);
         //code snippet to show managers their special button
         //need to find a place to put the flag for managerliness
-        Boolean ManagerAccount=true;
+        Boolean ManagerAccount=false;
         if (ManagerAccount!=true){
           ManagerRoomReportButton.setVisible(false);
         }
@@ -230,19 +228,22 @@ public class MainPage extends javax.swing.JFrame {
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
        String text = SearchCost.getText();
-       System.out.print(User.passwordGet());
-       int SearchPrice = Integer.parseInt(text);
-       //should be searchprice>=Roomcost, but this suffices for my test
-       ////////////////////////////////////////add other rooms when done
-       if (6>=SearchPrice){
-       new OpulentRoom().setVisible(true);
+       int Budget = Integer.parseInt(text);
+       //compares price of each room to budget, opens a page for each room which is within nightly budget
+       if (Room1.priceGet()<=Budget){
+       new OpulentRoom(Room1, 1).setVisible(true);
+       }
+       if (Room2.priceGet()<=Budget){
+       new OpulentRoom(Room2, 2).setVisible(true);
+       }
+       if (Room3.priceGet()<=Budget){
+       new OpulentRoom(Room3, 3).setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
 //opens the current reservations and notifications for account, then clears notifications
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
-        //doesn't exist yet but should work when it does
+        //doesn't exist yet, is here for organization purposes
          new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
-         User.notificationsSet("");
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
 
