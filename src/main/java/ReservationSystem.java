@@ -19,41 +19,53 @@ import java.util.Scanner;
     makeReservation(roomType,date,username,availability)
     */
 public class ReservationSystem {
+   // account and room constructors
     Account accountTemp;
-    Room roomTemp;
+    room roomTemp;
     
      ReservationSystem(){
         
     }
+     //account constructor
      ReservationSystem(Account a){
-        a = accountTemp;
+        accountTemp=a;
     }
 
      //account will be a string
      //room would be 2 int for month and for day
-    public String makeReservation(Room r, int month, int day, int roomNumber) throws Exception{
-        r=roomTemp;
-        String returnValue = "No Reservation Made";
-       if (roomTemp.availabilityGet(month , day) > -1){
-            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + month +" " + day+" " + roomNumber +"");
+    public String makeReservation(room r, int month, int day, int roomNumber) throws Exception{
+        roomTemp=r;
+        String returnValue = "No Reservation Made"; // no reservation has been made
+       if (roomTemp.availabilityGet(month , day) > 0){
+           int MonthPrint=month+1;
+           int DayPrint=day+1;
+            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"");
             //accountTemp.notificationSet(accountTemp.notificationGet()+ "There is a new notification!");
-            File userfile = new File((accountTemp.usernameGet()+".txt"));
+            
+            // access the user and room files
+            File userfile = new File((accountTemp.usernameGet()+".txt")); 
             File roomfile = new File ("Room"+roomNumber+".txt");
             FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
             FileWriter writeRoomFile = new FileWriter("Room"+roomNumber+".txt");
-            userfile.delete();
+            
+            // delete and recreate the user and room file
+            userfile.delete(); 
             userfile.createNewFile();
             roomfile.delete();
             roomfile.createNewFile();
-            writeUserFile.write(accountTemp.passwordGet()+"\n");
+           
+            // write to the new user file
+            writeUserFile.write(accountTemp.passwordGet()+"\n"); 
             writeUserFile.write(accountTemp.reservationsGet()+"\n");
             writeUserFile.write(accountTemp.notificationsGet()+"\n");
             writeUserFile.close();
         
+           //write to the new room file
             writeRoomFile.write(roomTemp.costGet()+"\n");
-            writeRoomFile.write(roomTemp.amenititesGet()+"\n");
+            writeRoomFile.write(roomTemp.amenitiesGet()+"\n");
         
-            roomTemp.availabilitySet(month,day, -1);
+            //set the new array for the availability array
+            roomTemp.availabilitySet(month,day, -1); 
         
             for (int monthIndex = 0; monthIndex < 12 ;monthIndex++) {
                 for (int dayIndex = 0; dayIndex < 31; dayIndex++){
@@ -61,7 +73,7 @@ public class ReservationSystem {
                 }
             }
             writeRoomFile.close();
-            returnValue = "Reservation Complete!";
+            returnValue = "Reservation Complete!"; // new return value to show revervation method was done
         }
     return returnValue;
     }

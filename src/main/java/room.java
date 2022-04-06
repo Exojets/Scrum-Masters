@@ -24,12 +24,8 @@ public class Room {
         }          
       }    
       
-   public String costGet(){ 
+   public int costGet(){ 
       return cost;
-   }
-      
-   public String sizeGet(){
-      return size;
    }
       
    public String amenitiesGet(){
@@ -44,9 +40,10 @@ public class Room {
       return availability;
    }
       
-   public void availabilitySet(String newAvailability){
+   public void availabilitySet(int[] newAvailability){
       availability = newAvailability;
    }
+}
          
       
       

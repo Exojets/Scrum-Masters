@@ -1,3 +1,7 @@
+
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
@@ -9,31 +13,31 @@
  */
 public class MainPage extends javax.swing.JFrame {
      Account User;
-    /**
-     * Creates new form MainPage
-     */
+     room Room1;
+     room Room2;
+     room Room3;
+     ReservationSystem Reserver;
+     
     public MainPage() {
         initComponents();
-        //code snippet to show managers their special button
-        //need to find a place to put the flag for managerliness
-       Boolean ManagerAccount=true;
-        if (ManagerAccount!=true){
-            ManagerRoomReportButton.setVisible(false);
-        }
     }
     public MainPage(String Username) throws Exception {
         initComponents();
-        //////////////temporary until button will be used
+        User=new Account(Username);
+        Room1 = new room("room1");
+        Room2 = new room("room2");
+        Room3 = new room("room3");
+        Reserver=new ReservationSystem(User);
+        //////////////temporary until buttons will be used
         CheckReservationsAndNotifications.setVisible(false);
         ChangeReservationDate.setVisible(false);
         RoomCancelButton.setVisible(false);
         MonthCancelInput.setVisible(false);
         DayCancelInput.setVisible(false);
         RoomSelectCancelInput.setVisible(false);
-        User=new Account(Username);
         //code snippet to show managers their special button
         //need to find a place to put the flag for managerliness
-        Boolean ManagerAccount=true;
+        Boolean ManagerAccount=false;
         if (ManagerAccount!=true){
           ManagerRoomReportButton.setVisible(false);
         }
@@ -62,6 +66,7 @@ public class MainPage extends javax.swing.JFrame {
         ChangeReservationDate = new javax.swing.JButton();
         RoomSelectCancelInput = new javax.swing.JTextField();
         RoomSelectInput = new javax.swing.JTextField();
+        ReservationSuccessorFail = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +153,8 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        ReservationSuccessorFail.setText(" ");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -158,16 +165,21 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(MonthReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(DayReserveInput))
-                            .addComponent(RoomSelectInput)
-                            .addComponent(ChangeReservationDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(69, 69, 69)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(MonthReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(DayReserveInput))
+                                    .addComponent(RoomSelectInput)
+                                    .addComponent(ChangeReservationDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(69, 69, 69))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SearchCost)
                             .addComponent(SearchRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -219,9 +231,11 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(RoomCancelButton)
-                        .addGap(51, 51, 51))))
+                        .addGap(18, 18, 18)
+                        .addComponent(ReservationSuccessorFail)
+                        .addGap(18, 18, 18))))
         );
 
         pack();
@@ -230,19 +244,22 @@ public class MainPage extends javax.swing.JFrame {
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
        String text = SearchCost.getText();
-       System.out.print(User.passwordGet());
-       int SearchPrice = Integer.parseInt(text);
-       //should be searchprice>=Roomcost, but this suffices for my test
-       ////////////////////////////////////////add other rooms when done
-       if (6>=SearchPrice){
-       new OpulentRoom().setVisible(true);
+       int Budget = Integer.parseInt(text);
+       //compares price of each room to budget, opens a page for each room which is within nightly budget
+       if (Room1.costGet()<=Budget){
+       new OpulentRoom(Room1, 1).setVisible(true);
+       }
+       if (Room2.costGet()<=Budget){
+       new OpulentRoom(Room2, 2).setVisible(true);
+       }
+       if (Room3.costGet()<=Budget){
+       new OpulentRoom(Room3, 3).setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
 //opens the current reservations and notifications for account, then clears notifications
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
-        //doesn't exist yet but should work when it does
-         new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
-         User.notificationsSet("");
+        //doesn't exist yet, is here for organization purposes
+        // new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
 
@@ -252,6 +269,28 @@ public class MainPage extends javax.swing.JFrame {
 
     private void RoomReserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomReserveButtonActionPerformed
         // TODO add your handling code here:
+        int MonthtoReserve=Integer.parseInt(MonthReserveInput.getText());
+        int DaytoReserve=Integer.parseInt(DayReserveInput.getText());
+        int RoomtoReserve=Integer.parseInt(RoomSelectInput.getText());
+        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31)
+        if(RoomtoReserve==1)
+            try {
+                ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+        } catch (Exception ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(RoomtoReserve==2)
+            try {
+                ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+        } catch (Exception ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if(RoomtoReserve==3)
+            try {
+                ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+        } catch (Exception ex) {
+            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
     }//GEN-LAST:event_RoomReserveButtonActionPerformed
 
@@ -326,6 +365,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton ManagerRoomReportButton;
     private javax.swing.JTextField MonthCancelInput;
     private javax.swing.JTextField MonthReserveInput;
+    private javax.swing.JLabel ReservationSuccessorFail;
     private javax.swing.JButton RoomCancelButton;
     private javax.swing.JButton RoomReserveButton;
     private javax.swing.JTextField RoomSelectCancelInput;
