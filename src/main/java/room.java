@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Room {
    private String amenities;
    private int cost;
-   private int[] availability = new int[365];
+   private int[][] availability = new int[12][31];
 
    
    public Room(String name) throws Exception {
@@ -18,10 +18,11 @@ public class Room {
       
       amenities = sc.nextLine();
       
-      
-      for(int i = 0; i < 365; i++) {
-         availability[i] = sc.nextInt();
-        }          
+      for(int i = 0; i < 12; i++){
+        for(int j = 0; j < 31; j++) {
+            availability[i][j] = sc.nextInt();
+        }
+      }
       }    
       
    public int costGet(){ 
@@ -36,12 +37,12 @@ public class Room {
       amenities = newAmenities;
    }
       
-   public int[] availabilityGet(){
-      return availability;
+   public int availabilityGet(int month, int day){
+      return availability[month][day];
    }
       
-   public void availabilitySet(int[] newAvailability){
-      availability = newAvailability;
+   public void availabilitySet(int month, int day, int modifier){
+      availability[month][day] += modifier;
    }
 }
          
