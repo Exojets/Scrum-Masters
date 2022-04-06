@@ -6,32 +6,23 @@ import java.util.Scanner;
 public class Room {
    private String amenities;
    private int cost;
-   private int size;
-   private int availability;
+   private int[] availability = new int[365];
 
    
    public Room(String name) throws Exception {
       
-      private Scanner x;
-   
-      public void openFile(){
-         try{
-            x = new Scanner(new File("Room1.txt"));
-            x = new Scanner(new File("Room2.txt"));
-            x = new Scanner(new File("Room3.txt"));
-         }
-      }
-         
-         
-   public void readFile();
-        
-        
-   String amenities = "room";
+      Scanner sc = new Scanner(new File(name+".txt"));
       
-   int cost = 1;
-   int size = 1;
-   int availability = 1;
+      cost = sc.nextInt();
+      sc.nextLine();
       
+      amenities = sc.nextLine();
+      
+      
+      for(int i = 0; i < 365; i++) {
+         availability[i] = sc.nextInt();
+        }          
+      }    
       
    public String costGet(){ 
       return cost;
@@ -49,7 +40,7 @@ public class Room {
       amenities = newAmenities;
    }
       
-   public String availabilityGet(){
+   public int[] availabilityGet(){
       return availability;
    }
       
