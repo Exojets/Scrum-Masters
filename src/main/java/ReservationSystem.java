@@ -21,23 +21,25 @@ import java.util.Scanner;
 public class ReservationSystem {
    // account and room constructors
     Account accountTemp;
-    Room roomTemp;
+    room roomTemp;
     
      ReservationSystem(){
         
     }
      //account constructor
      ReservationSystem(Account a){
-        a = accountTemp;
+        accountTemp=a;
     }
 
      //account will be a string
      //room would be 2 int for month and for day
-    public String makeReservation(Room r, int month, int day, int roomNumber) throws Exception{
-        r=roomTemp;
+    public String makeReservation(room r, int month, int day, int roomNumber) throws Exception{
+        roomTemp=r;
         String returnValue = "No Reservation Made"; // no reservation has been made
-       if (roomTemp.availabilityGet(month , day) > -1){
-            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + month +" " + day+" " + roomNumber +"");
+       if (roomTemp.availabilityGet(month , day) > 0){
+           int MonthPrint=month+1;
+           int DayPrint=day+1;
+            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"");
             //accountTemp.notificationSet(accountTemp.notificationGet()+ "There is a new notification!");
             
             // access the user and room files
@@ -60,7 +62,7 @@ public class ReservationSystem {
         
            //write to the new room file
             writeRoomFile.write(roomTemp.costGet()+"\n");
-            writeRoomFile.write(roomTemp.amenititesGet()+"\n");
+            writeRoomFile.write(roomTemp.amenitiesGet()+"\n");
         
             //set the new array for the availability array
             roomTemp.availabilitySet(month,day, -1); 

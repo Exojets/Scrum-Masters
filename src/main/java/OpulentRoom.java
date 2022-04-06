@@ -33,7 +33,7 @@ public class OpulentRoom extends javax.swing.JFrame {
         jTextArea1.setText(Opulent.amenitiesGet());
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
-        int PriceTextAsInt=Opulent.priceGet();
+        int PriceTextAsInt=Opulent.costGet();
         String PriceText=String.valueOf(PriceTextAsInt);
         jLabel34.setText(PriceText);
         
@@ -348,127 +348,127 @@ public class OpulentRoom extends javax.swing.JFrame {
        int MonthtoCheck = Integer.parseInt(text)-1;
        if(MonthtoCheck>=1&&MonthtoCheck<12){
        //this is bad and I know it's bad but Swing doesn't have an easy way to convert a bunch of jLabels into an array and I need time to figure out how that works.
-            if (Opulent.AvailabileGet(MonthtoCheck, 0)==0)
+            if (Opulent.availabilityGet(MonthtoCheck, 0)==0)
                 jLabel3.setVisible(false);
             else
                 jLabel3.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 1)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 1)==0)
                         jLabel4.setVisible(false);
                     else
                         jLabel4.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 2)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 2)==0)
                         jLabel5.setVisible(false);
                     else
                         jLabel5.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 3)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 3)==0)
                         jLabel6.setVisible(false);
                     else
                         jLabel6.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 4)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 4)==0)
                         jLabel7.setVisible(false);
                     else
                         jLabel7.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 5)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 5)==0)
                         jLabel8.setVisible(false);
                     else
                         jLabel8.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 6)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 6)==0)
                         jLabel9.setVisible(false);
                     else
                         jLabel9.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 7)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 7)==0)
                         jLabel10.setVisible(false);
                     else
                         jLabel10.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 8)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 8)==0)
                         jLabel11.setVisible(false);
                     else
                         jLabel11.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 9)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 9)==0)
                         jLabel12.setVisible(false);
                     else
                         jLabel12.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 10)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 10)==0)
                         jLabel13.setVisible(false);
                     else
                         jLabel13.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 11)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 11)==0)
                         jLabel14.setVisible(false);
                     else
                         jLabel14.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 12)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 12)==0)
                         jLabel15.setVisible(false);
                     else
                         jLabel15.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 13)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 13)==0)
                         jLabel16.setVisible(false);
                     else
                         jLabel16.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 14)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 14)==0)
                         jLabel17.setVisible(false);
                     else
                         jLabel17.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 15)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 15)==0)
                         jLabel18.setVisible(false);
                     else
                         jLabel18.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 16)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 16)==0)
                         jLabel19.setVisible(false);
                     else
                         jLabel19.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 17)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 17)==0)
                         jLabel20.setVisible(false);
                     else
                         jLabel20.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 18)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 18)==0)
                         jLabel21.setVisible(false);
                     else
                         jLabel21.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 19)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 19)==0)
                         jLabel22.setVisible(false);
                     else
                         jLabel22.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 20)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 20)==0)
                         jLabel23.setVisible(false);
                     else
                         jLabel23.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 21)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 21)==0)
                         jLabel24.setVisible(false);
                     else
                         jLabel24.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 22)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 22)==0)
                         jLabel25.setVisible(false);
                     else
                         jLabel25.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 23)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 23)==0)
                         jLabel26.setVisible(false);
                     else
                         jLabel26.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 24)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 24)==0)
                         jLabel27.setVisible(false);
                     else
                         jLabel27.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 25)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 25)==0)
                         jLabel28.setVisible(false);
                     else
                         jLabel28.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 26)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 26)==0)
                         jLabel29.setVisible(false);
                     else
                         jLabel29.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 27)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 27)==0)
                         jLabel30.setVisible(false);
                     else
                         jLabel30.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 28)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 28)==0)
                         jLabel31.setVisible(false);
                     else
                         jLabel31.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 29)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 29)==0)
                         jLabel32.setVisible(false);
                     else
                         jLabel32.setVisible(true);
-             if (Opulent.AvailabileGet(MonthtoCheck, 30)==0)
+             if (Opulent.availabilityGet(MonthtoCheck, 30)==0)
                         jLabel33.setVisible(false);
                     else
                         jLabel33.setVisible(true);
