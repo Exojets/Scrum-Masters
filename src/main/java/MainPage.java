@@ -1,4 +1,5 @@
 
+import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -67,6 +68,7 @@ public class MainPage extends javax.swing.JFrame {
         RoomSelectCancelInput = new javax.swing.JTextField();
         RoomSelectInput = new javax.swing.JTextField();
         ReservationSuccessorFail = new javax.swing.JLabel();
+        CreditCardEntry = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -110,6 +112,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         DayReserveInput.setText("Day");
+        DayReserveInput.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DayReserveInputActionPerformed(evt);
+            }
+        });
 
         MonthCancelInput.setText("Month to Cancel");
         MonthCancelInput.addActionListener(new java.awt.event.ActionListener() {
@@ -146,7 +153,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        RoomSelectInput.setText("RoomNumber");
+        RoomSelectInput.setText("Room Reservation Code");
         RoomSelectInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RoomSelectInputActionPerformed(evt);
@@ -154,6 +161,13 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         ReservationSuccessorFail.setText(" ");
+
+        CreditCardEntry.setText("Credit card number. no spaces or -");
+        CreditCardEntry.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CreditCardEntryActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,6 +192,8 @@ public class MainPage extends javax.swing.JFrame {
                                         .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(69, 69, 69))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(3, 3, 3)
                                 .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -231,10 +247,12 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
                         .addComponent(RoomCancelButton)
                         .addGap(18, 18, 18)
-                        .addComponent(ReservationSuccessorFail)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ReservationSuccessorFail)
+                            .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18))))
         );
 
@@ -268,30 +286,34 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_SearchCostActionPerformed
 
     private void RoomReserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomReserveButtonActionPerformed
-        // TODO add your handling code here:
+
         int MonthtoReserve=Integer.parseInt(MonthReserveInput.getText());
         int DaytoReserve=Integer.parseInt(DayReserveInput.getText());
         int RoomtoReserve=Integer.parseInt(RoomSelectInput.getText());
-        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31)
-        if(RoomtoReserve==1)
-            try {
-                ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-        } catch (Exception ex) {
-            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(RoomtoReserve==2)
-            try {
-                ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-        } catch (Exception ex) {
-            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if(RoomtoReserve==3)
-            try {
-                ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-        } catch (Exception ex) {
-            Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
+        BigInteger CreditCardCheck=new BigInteger(CreditCardEntry.getText());
+        //checks whether the credit card is the proper length, and whether the day, month and room a reservation is desired for exists
+        //if so, attempts to reserve the room
+        //MonthtoReserve and DaytoReserve are passed as value -1 to account for arrays starting at [0][0]
+        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31&&CreditCardCheck.toString().length()==16){
+            if(RoomtoReserve==1)
+                try {
+                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+            } catch (Exception ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(RoomtoReserve==2)
+                try {
+                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+            } catch (Exception ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            if(RoomtoReserve==3)
+                try {
+                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+            } catch (Exception ex) {
+                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        } 
     }//GEN-LAST:event_RoomReserveButtonActionPerformed
 
     private void MonthReserveInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthReserveInputActionPerformed
@@ -321,6 +343,14 @@ public class MainPage extends javax.swing.JFrame {
     private void RoomSelectInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomSelectInputActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_RoomSelectInputActionPerformed
+
+    private void CreditCardEntryActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CreditCardEntryActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_CreditCardEntryActionPerformed
+
+    private void DayReserveInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DayReserveInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DayReserveInputActionPerformed
 
     /**
      * @param args the command line arguments
@@ -360,6 +390,7 @@ public class MainPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ChangeReservationDate;
     private javax.swing.JButton CheckReservationsAndNotifications;
+    private javax.swing.JTextField CreditCardEntry;
     private javax.swing.JTextField DayCancelInput;
     private javax.swing.JTextField DayReserveInput;
     private javax.swing.JButton ManagerRoomReportButton;
