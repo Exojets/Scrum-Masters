@@ -301,19 +301,24 @@ public class MainPage extends javax.swing.JFrame {
             } catch (Exception ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(RoomtoReserve==2)
+            else if(RoomtoReserve==2)
                 try {
                     ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
             } catch (Exception ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
-            if(RoomtoReserve==3)
+            else if(RoomtoReserve==3)
                 try {
                     ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
             } catch (Exception ex) {
                 Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
             }
+            else
+                ReservationSuccessorFail.setText("This room code does not exist.");
+                
         } 
+        else
+            ReservationSuccessorFail.setText("Card invalid or date does not exist");
     }//GEN-LAST:event_RoomReserveButtonActionPerformed
 
     private void MonthReserveInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MonthReserveInputActionPerformed
