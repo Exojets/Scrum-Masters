@@ -1,4 +1,5 @@
 
+import java.util.ArrayList;
 import javax.swing.JLabel;
 
 /*
@@ -11,8 +12,10 @@ import javax.swing.JLabel;
  * @author Groe
  */
 public class RoomDetails extends javax.swing.JFrame {
-    room Opulent;
+    room RoomtoUse;
     String RoomType;
+     ArrayList<JLabel> label = new ArrayList<JLabel>();
+     JLabel Labels[]=new JLabel[31];
     /**
      * Creates new form RoomDetails
      */
@@ -22,7 +25,9 @@ public class RoomDetails extends javax.swing.JFrame {
     //initializes details of the room this is representing
     //name and initial text
     public RoomDetails(room RoomRecieved, int RoomTypeSet) {
-        Opulent=RoomRecieved;
+        label.add(jLabel3);
+        //label.get(0).getText();
+        RoomtoUse=RoomRecieved;
         if (RoomTypeSet==1)
             RoomType="Executive Room";
         if (RoomTypeSet==2)
@@ -32,13 +37,43 @@ public class RoomDetails extends javax.swing.JFrame {
         initComponents();
         ReservationCodeDisplay.setText("Reservation Code is:"+RoomTypeSet);
         jLabel1.setText(RoomType);
-        jTextArea1.setText(Opulent.amenitiesGet());
+        jTextArea1.setText(RoomtoUse.amenitiesGet());
         jTextArea1.setLineWrap(true);
         jTextArea1.setWrapStyleWord(true);
-        int PriceTextAsInt=Opulent.costGet();
+        int PriceTextAsInt=RoomtoUse.costGet();
         String PriceText=String.valueOf(PriceTextAsInt);
         jLabel34.setText(PriceText);
-        
+        Labels[0]=jLabel3;
+        Labels[1]=jLabel4;
+        Labels[2]=jLabel5;
+        Labels[3]=jLabel6;
+        Labels[4]=jLabel7;
+        Labels[5]=jLabel8;
+        Labels[6]=jLabel9;
+        Labels[7]=jLabel10;
+        Labels[8]=jLabel11;
+        Labels[9]=jLabel12;
+        Labels[10]=jLabel13;
+        Labels[11]=jLabel14;
+        Labels[12]=jLabel15;
+        Labels[13]=jLabel16;
+        Labels[14]=jLabel17;
+        Labels[15]=jLabel18;
+        Labels[16]=jLabel19;
+        Labels[17]=jLabel20;
+        Labels[18]=jLabel21;
+        Labels[19]=jLabel22;
+        Labels[20]=jLabel23;
+        Labels[21]=jLabel24;
+        Labels[22]=jLabel25;
+        Labels[23]=jLabel26;
+        Labels[24]=jLabel27;
+        Labels[25]=jLabel28;
+        Labels[26]=jLabel29;
+        Labels[27]=jLabel30;
+        Labels[28]=jLabel31;
+        Labels[29]=jLabel32;
+        Labels[30]=jLabel33;
     }
 
     /**
@@ -368,130 +403,12 @@ public class RoomDetails extends javax.swing.JFrame {
            MonthtoCheck-=1;
            //if the room is availabile during a given day, makes the day's indicator visible
            //if not, vanishes it. end result: Available days are the only ones listed
-            if (Opulent.availabilityGet(MonthtoCheck, 0)==0)
-                jLabel3.setVisible(false);
+           for(int Index=0;Index<31;Index++){
+               if (RoomtoUse.availabilityGet(MonthtoCheck, Index)==0)
+                Labels[Index].setVisible(false);
             else
-                jLabel3.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 1)==0)
-                        jLabel4.setVisible(false);
-                    else
-                        jLabel4.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 2)==0)
-                        jLabel5.setVisible(false);
-                    else
-                        jLabel5.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 3)==0)
-                        jLabel6.setVisible(false);
-                    else
-                        jLabel6.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 4)==0)
-                        jLabel7.setVisible(false);
-                    else
-                        jLabel7.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 5)==0)
-                        jLabel8.setVisible(false);
-                    else
-                        jLabel8.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 6)==0)
-                        jLabel9.setVisible(false);
-                    else
-                        jLabel9.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 7)==0)
-                        jLabel10.setVisible(false);
-                    else
-                        jLabel10.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 8)==0)
-                        jLabel11.setVisible(false);
-                    else
-                        jLabel11.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 9)==0)
-                        jLabel12.setVisible(false);
-                    else
-                        jLabel12.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 10)==0)
-                        jLabel13.setVisible(false);
-                    else
-                        jLabel13.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 11)==0)
-                        jLabel14.setVisible(false);
-                    else
-                        jLabel14.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 12)==0)
-                        jLabel15.setVisible(false);
-                    else
-                        jLabel15.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 13)==0)
-                        jLabel16.setVisible(false);
-                    else
-                        jLabel16.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 14)==0)
-                        jLabel17.setVisible(false);
-                    else
-                        jLabel17.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 15)==0)
-                        jLabel18.setVisible(false);
-                    else
-                        jLabel18.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 16)==0)
-                        jLabel19.setVisible(false);
-                    else
-                        jLabel19.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 17)==0)
-                        jLabel20.setVisible(false);
-                    else
-                        jLabel20.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 18)==0)
-                        jLabel21.setVisible(false);
-                    else
-                        jLabel21.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 19)==0)
-                        jLabel22.setVisible(false);
-                    else
-                        jLabel22.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 20)==0)
-                        jLabel23.setVisible(false);
-                    else
-                        jLabel23.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 21)==0)
-                        jLabel24.setVisible(false);
-                    else
-                        jLabel24.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 22)==0)
-                        jLabel25.setVisible(false);
-                    else
-                        jLabel25.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 23)==0)
-                        jLabel26.setVisible(false);
-                    else
-                        jLabel26.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 24)==0)
-                        jLabel27.setVisible(false);
-                    else
-                        jLabel27.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 25)==0)
-                        jLabel28.setVisible(false);
-                    else
-                        jLabel28.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 26)==0)
-                        jLabel29.setVisible(false);
-                    else
-                        jLabel29.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 27)==0)
-                        jLabel30.setVisible(false);
-                    else
-                        jLabel30.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 28)==0)
-                        jLabel31.setVisible(false);
-                    else
-                        jLabel31.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 29)==0)
-                        jLabel32.setVisible(false);
-                    else
-                        jLabel32.setVisible(true);
-             if (Opulent.availabilityGet(MonthtoCheck, 30)==0)
-                        jLabel33.setVisible(false);
-                    else
-                        jLabel33.setVisible(true);
+                Labels[Index].setVisible(true);
+           }
        }
 
         
