@@ -265,13 +265,13 @@ public class MainPage extends javax.swing.JFrame {
        int Budget = Integer.parseInt(text);
        //compares price of each room to budget, opens a page for each room which is within nightly budget
        if (Room1.costGet()<=Budget){
-       new OpulentRoom(Room1, 1).setVisible(true);
+       new RoomDetails(Room1, 1).setVisible(true);
        }
        if (Room2.costGet()<=Budget){
-       new OpulentRoom(Room2, 2).setVisible(true);
+       new RoomDetails(Room2, 2).setVisible(true);
        }
        if (Room3.costGet()<=Budget){
-       new OpulentRoom(Room3, 3).setVisible(true);
+       new RoomDetails(Room3, 3).setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
 //opens the current reservations and notifications for account, then clears notifications
@@ -295,26 +295,29 @@ public class MainPage extends javax.swing.JFrame {
         //if so, attempts to reserve the room
         //MonthtoReserve and DaytoReserve are passed as value -1 to account for arrays starting at [0][0]
         if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31&&(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15)){
-            if(RoomtoReserve==1)
-                try {
-                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-            } catch (Exception ex) {
-                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+            switch (RoomtoReserve) {
+                case 1:
+                    try {
+                        ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                case 2:
+                    try {
+                        ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                case 3:
+                    try {
+                        ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                default:
+                    ReservationSuccessorFail.setText("This room code does not exist.");
+                    break;
             }
-            else if(RoomtoReserve==2)
-                try {
-                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room2, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-            } catch (Exception ex) {
-                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            else if(RoomtoReserve==3)
-                try {
-                    ReservationSuccessorFail.setText(Reserver.makeReservation(Room3, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
-            } catch (Exception ex) {
-                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            else
-                ReservationSuccessorFail.setText("This room code does not exist.");
                 
         } 
         else

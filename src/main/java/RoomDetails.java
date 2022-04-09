@@ -10,17 +10,18 @@ import javax.swing.JLabel;
  *
  * @author Groe
  */
-public class OpulentRoom extends javax.swing.JFrame {
+public class RoomDetails extends javax.swing.JFrame {
     room Opulent;
-    JLabel labels[]=new JLabel[31];
     String RoomType;
     /**
-     * Creates new form OpulentRoom
+     * Creates new form RoomDetails
      */
-    public OpulentRoom() {
+    public RoomDetails() {
         initComponents();
     }
-    public OpulentRoom(room RoomRecieved, int RoomTypeSet) {
+    //initializes details of the room this is representing
+    //name and initial text
+    public RoomDetails(room RoomRecieved, int RoomTypeSet) {
         Opulent=RoomRecieved;
         if (RoomTypeSet==1)
             RoomType="Executive Room";
@@ -356,15 +357,17 @@ public class OpulentRoom extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //checks for availability during the month requested
     private void UpdateAvailabilityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpdateAvailabilityActionPerformed
-        // TODO add your handling code here:
+
         String text = MonthDesired.getText();
+        //ensures the number is both an integer and between 1-12(month exists)
        int MonthtoCheck = Integer.parseInt(text);
        if(MonthtoCheck>=1&&MonthtoCheck<=12){
+           //convert Month into an index for the array
            MonthtoCheck-=1;
-           System.out.print(Opulent.availabilityGet(MonthtoCheck, 29));
-       //this is bad and I know it's bad but Swing doesn't have an easy way to convert a bunch of jLabels into an array and I need time to figure out how that works.
+           //if the room is availabile during a given day, makes the day's indicator visible
+           //if not, vanishes it. end result: Available days are the only ones listed
             if (Opulent.availabilityGet(MonthtoCheck, 0)==0)
                 jLabel3.setVisible(false);
             else
@@ -521,20 +524,21 @@ public class OpulentRoom extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(OpulentRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(OpulentRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(OpulentRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(OpulentRoom.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RoomDetails.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new OpulentRoom().setVisible(true);
+                new RoomDetails().setVisible(true);
             }
         });
     }
