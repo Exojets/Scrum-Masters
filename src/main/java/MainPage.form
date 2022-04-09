@@ -48,7 +48,7 @@
                           <Group type="102" attributes="0">
                               <Component id="CreditCardEntry" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                              <Component id="ReservationSuccessorFail" min="-2" pref="160" max="-2" attributes="0"/>
+                              <Component id="ReservationSuccessorFail" min="-2" pref="201" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
