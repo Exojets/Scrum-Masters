@@ -294,7 +294,7 @@ public class MainPage extends javax.swing.JFrame {
         //checks whether the credit card is the proper length, and whether the day, month and room a reservation is desired for exists
         //if so, attempts to reserve the room
         //MonthtoReserve and DaytoReserve are passed as value -1 to account for arrays starting at [0][0]
-        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31&&CreditCardCheck.toString().length()==16){
+        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31&&(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15)){
             if(RoomtoReserve==1)
                 try {
                     ReservationSuccessorFail.setText(Reserver.makeReservation(Room1, MonthtoReserve-1, DaytoReserve-1, RoomtoReserve));
