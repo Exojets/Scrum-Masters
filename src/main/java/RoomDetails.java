@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 public class RoomDetails extends javax.swing.JFrame {
     room RoomtoUse;
     String RoomType;
-     ArrayList<JLabel> label = new ArrayList<JLabel>();
      JLabel Labels[]=new JLabel[31];
     /**
      * Creates new form RoomDetails
@@ -25,8 +24,6 @@ public class RoomDetails extends javax.swing.JFrame {
     //initializes details of the room this is representing
     //name and initial text
     public RoomDetails(room RoomRecieved, int RoomTypeSet) {
-        label.add(jLabel3);
-        //label.get(0).getText();
         RoomtoUse=RoomRecieved;
         if (RoomTypeSet==1)
             RoomType="Executive Room";
@@ -43,6 +40,7 @@ public class RoomDetails extends javax.swing.JFrame {
         int PriceTextAsInt=RoomtoUse.costGet();
         String PriceText=String.valueOf(PriceTextAsInt);
         jLabel34.setText(PriceText);
+        //initialize labels. This unfortunately cannot be done in fewer lines when using the WYSIWIG generator 
         Labels[0]=jLabel3;
         Labels[1]=jLabel4;
         Labels[2]=jLabel5;

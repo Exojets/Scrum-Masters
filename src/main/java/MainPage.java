@@ -57,7 +57,6 @@ public class MainPage extends javax.swing.JFrame {
         SearchRoomButton = new javax.swing.JButton();
         CheckReservationsAndNotifications = new javax.swing.JButton();
         ManagerRoomReportButton = new javax.swing.JButton();
-        SearchCost = new javax.swing.JTextField();
         RoomReserveButton = new javax.swing.JButton();
         MonthReserveInput = new javax.swing.JTextField();
         DayReserveInput = new javax.swing.JTextField();
@@ -69,6 +68,7 @@ public class MainPage extends javax.swing.JFrame {
         RoomSelectInput = new javax.swing.JTextField();
         ReservationSuccessorFail = new javax.swing.JLabel();
         CreditCardEntry = new javax.swing.JTextField();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,13 +89,6 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         ManagerRoomReportButton.setText("Generate room report");
-
-        SearchCost.setText("Budget Per Night");
-        SearchCost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchCostActionPerformed(evt);
-            }
-        });
 
         RoomReserveButton.setText("Reserve a Room");
         RoomReserveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -169,6 +162,13 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Executive Room($500)", "Extravagant Room($1000)", "Opulent Room($1500)" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -188,8 +188,9 @@ public class MainPage extends javax.swing.JFrame {
                                     .addComponent(ChangeReservationDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                         .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(69, 69, 69))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -197,10 +198,10 @@ public class MainPage extends javax.swing.JFrame {
                                 .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(SearchCost)
                             .addComponent(SearchRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(CheckReservationsAndNotifications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ManagerRoomReportButton)))
+                            .addComponent(ManagerRoomReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -227,11 +228,11 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(SearchRoomButton)
                             .addComponent(MonthReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DayReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(SearchCost, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13))
+                        .addGap(37, 37, 37))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(RoomSelectInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(RoomSelectInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -261,17 +262,17 @@ public class MainPage extends javax.swing.JFrame {
 //searches for rooms that cost less than budget given
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
-       String text = SearchCost.getText();
-       int Budget = Integer.parseInt(text);
+       String text = jComboBox1.getSelectedItem().toString();
+       //int Budget = Integer.parseInt(text);
        //compares price of each room to budget, opens a page for each room which is within nightly budget
-       if (Room1.costGet()<=Budget){
+       if ("Executive Room($500)".equals(text)){
        new RoomDetails(Room1, 1).setVisible(true);
        }
-       if (Room2.costGet()<=Budget){
-       new RoomDetails(Room2, 2).setVisible(true);
+       if ("Extravagant Room($1000)".equals(text)){
+        new RoomDetails(Room2, 2).setVisible(true);
        }
-       if (Room3.costGet()<=Budget){
-       new RoomDetails(Room3, 3).setVisible(true);
+       if ("Opulent Room($1500)".equals(text)){
+         new RoomDetails(Room3, 3).setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
 //opens the current reservations and notifications for account, then clears notifications
@@ -280,10 +281,6 @@ public class MainPage extends javax.swing.JFrame {
         // new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
-
-    private void SearchCostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchCostActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchCostActionPerformed
 
     private void RoomReserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomReserveButtonActionPerformed
 
@@ -360,6 +357,10 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DayReserveInputActionPerformed
 
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -409,8 +410,8 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton RoomReserveButton;
     private javax.swing.JTextField RoomSelectCancelInput;
     private javax.swing.JTextField RoomSelectInput;
-    private javax.swing.JTextField SearchCost;
     private javax.swing.JButton SearchRoomButton;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

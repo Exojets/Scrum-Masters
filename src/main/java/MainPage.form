@@ -39,8 +39,9 @@
                                   <Component id="ChangeReservationDate" alignment="0" max="32767" attributes="0"/>
                                   <Group type="102" alignment="1" attributes="0">
                                       <Component id="MonthCancelInput" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="32767" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Component id="DayCancelInput" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                               <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
@@ -53,10 +54,10 @@
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="SearchCost" alignment="0" max="32767" attributes="0"/>
                           <Component id="SearchRoomButton" max="32767" attributes="0"/>
                           <Component id="CheckReservationsAndNotifications" max="32767" attributes="0"/>
-                          <Component id="ManagerRoomReportButton" min="-2" max="-2" attributes="0"/>
+                          <Component id="ManagerRoomReportButton" max="32767" attributes="0"/>
+                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -94,19 +95,20 @@
                           <Component id="MonthReserveInput" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="DayReserveInput" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="SearchCost" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="RoomSelectInput" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="RoomSelectInput" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="CheckReservationsAndNotifications" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="103" pref="103" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
                       <Component id="ManagerRoomReportButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="16" max="32767" attributes="0"/>
                   </Group>
@@ -159,14 +161,6 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Generate room report"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="SearchCost">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Budget Per Night"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchCostActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="RoomReserveButton">
       <Properties>
@@ -252,6 +246,23 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreditCardEntryActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="jComboBox1">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Executive Room($500)"/>
+            <StringItem index="1" value="Extravagant Room($1000)"/>
+            <StringItem index="2" value="Opulent Room($1500)"/>
+          </StringArray>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
     </Component>
   </SubComponents>
 </Form>

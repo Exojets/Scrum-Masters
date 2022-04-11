@@ -129,9 +129,8 @@ public class login extends javax.swing.JFrame {
         String Password=PasswordField.getText();
         //ensures that username and password fields weren't empty
         if (Username.length()>0&&Password.length()>0){
-            //
            String Filer=Username+".txt";
-           File TempFileStorage=null;
+           File TempFileStorage;
            TempFileStorage=new File(Filer);
            //checks if the username exists in database
            // If it does, compares password given to database. If it matches, opens main window and sends username as parameter
