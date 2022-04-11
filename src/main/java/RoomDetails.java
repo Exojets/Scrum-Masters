@@ -12,7 +12,7 @@ import javax.swing.JLabel;
  * @author Groe
  */
 public class RoomDetails extends javax.swing.JFrame {
-    room RoomtoUse;
+    Room RoomtoUse;
     String RoomType;
      JLabel Labels[]=new JLabel[31];
     /**
@@ -23,7 +23,7 @@ public class RoomDetails extends javax.swing.JFrame {
     }
     //initializes details of the room this is representing
     //name and initial text
-    public RoomDetails(room RoomRecieved, int RoomTypeSet) {
+    public RoomDetails(Room RoomRecieved, int RoomTypeSet) {
         RoomtoUse=RoomRecieved;
         if (RoomTypeSet==1)
             RoomType="Executive Room";

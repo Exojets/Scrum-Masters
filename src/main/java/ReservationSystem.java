@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class ReservationSystem {
    // account and room constructors
     Account accountTemp;
-    room roomTemp;
+    Room roomTemp;
     
      ReservationSystem(){
         
@@ -33,7 +33,7 @@ public class ReservationSystem {
 
      //account will be a string
      //room would be 2 int for month and for day
-    public String makeReservation(room r, int month, int day, int roomNumber) throws Exception{
+    public String makeReservation(Room r, int month, int day, int roomNumber) throws Exception{
         roomTemp=r;
         String returnValue = "No Reservation Made"; // no reservation has been made
        if (roomTemp.availabilityGet(month , day) > 0){
