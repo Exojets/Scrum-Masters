@@ -1,11 +1,14 @@
 
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Room {
    private String amenities, codeName;
-   private int cost;
+   private int Cost;
    private int[][] availability = new int[12][31];
 
    
@@ -14,7 +17,7 @@ public class Room {
       codeName = name;
       Scanner sc = new Scanner(new File(name+".txt"));
       
-      cost = sc.nextInt();
+      Cost = sc.nextInt();
       sc.nextLine();
       
       amenities = sc.nextLine();
@@ -27,7 +30,7 @@ public class Room {
       }    
       
    public int costGet(){ 
-      return cost;
+      return Cost;
    }
       
    public String amenitiesGet(){
@@ -45,7 +48,33 @@ public class Room {
    public void availabilitySet(int month, int day, int modifier){
       availability[month][day] += modifier;
    }
+   
+ public int roomReport(String FileInput) throws IOException{ 
+     int CurrentValue=0;
+     String FileName=FileInput+".txt";
+     FileWriter myWriter = new FileWriter(FileName, true);
+     BufferedWriter bw = new BufferedWriter(myWriter);
+     bw.write("Unsold rooms: ");
+     for(int i = 0; i < 12; i++){
+        for(int j = 0; j < 31; j++) {
+            bw.write(availability[i][j]+" ");
+            CurrentValue+=(Cost*(5-availability[i][j]));
+        }
+     bw.newLine();
+     bw.write("Total profit from room"+""+codeName+": "+CurrentValue);
+     
+    
+     
+     
+     
+     
+     
+     return CurrentValue;
+}  
+   
+   
 }
+
          
       
       
