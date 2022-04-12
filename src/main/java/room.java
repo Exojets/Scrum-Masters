@@ -49,10 +49,9 @@ public class Room {
       availability[month][day] += modifier;
    }
    
- public int roomReport(String FileInput) throws IOException{ 
+ public int roomReport(File FileInput) throws IOException{ 
      int CurrentValue=0;
-     String FileName=FileInput+".txt";
-     FileWriter myWriter = new FileWriter(FileName, true);
+     FileWriter myWriter = new FileWriter(FileInput, true);
      BufferedWriter bw = new BufferedWriter(myWriter);
      bw.write("Unsold rooms: ");
      for(int i = 0; i < 12; i++){
@@ -60,19 +59,15 @@ public class Room {
             bw.write(availability[i][j]+" ");
             CurrentValue+=(Cost*(5-availability[i][j]));
         }
+     }
+     CurrentValue-=Cost*35;
      bw.newLine();
-     bw.write("Total profit from room"+""+codeName+": "+CurrentValue);
-     
-    
-     
-     
-     
-     
-     
+     bw.write("Total profit from "+codeName+": "+CurrentValue);
+     bw.newLine();
+     bw.close();
      return CurrentValue;
-}  
    
-   
+    }
 }
 
          

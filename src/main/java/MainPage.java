@@ -1,4 +1,8 @@
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,7 +42,7 @@ public class MainPage extends javax.swing.JFrame {
         RoomSelectCancelInput.setVisible(false);
         //code snippet to show managers their special button
         //need to find a place to put the flag for managerliness
-        Boolean ManagerAccount=false;
+        Boolean ManagerAccount=true;
         if (ManagerAccount!=true){
           ManagerRoomReportButton.setVisible(false);
         }
@@ -89,6 +93,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         ManagerRoomReportButton.setText("Generate room report");
+        ManagerRoomReportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ManagerRoomReportButtonActionPerformed(evt);
+            }
+        });
 
         RoomReserveButton.setText("Reserve a Room");
         RoomReserveButton.addActionListener(new java.awt.event.ActionListener() {
@@ -262,6 +271,7 @@ public class MainPage extends javax.swing.JFrame {
 //searches for rooms that cost less than budget given
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
+      
        String text = jComboBox1.getSelectedItem().toString();
        //int Budget = Integer.parseInt(text);
        //compares price of each room to budget, opens a page for each room which is within nightly budget
@@ -335,6 +345,7 @@ public class MainPage extends javax.swing.JFrame {
 
     private void RoomCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomCancelButtonActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_RoomCancelButtonActionPerformed
 
     private void ChangeReservationDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeReservationDateActionPerformed
@@ -360,6 +371,24 @@ public class MainPage extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void ManagerRoomReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerRoomReportButtonActionPerformed
+         try {                                                        
+             int Total=0;
+             File ReportFile= new File("Report.txt");
+             ReportFile.createNewFile();
+             ReportFile.delete();
+             Total+=Room1.roomReport(ReportFile);
+             Total+=Room2.roomReport(ReportFile);
+             Total+=Room3.roomReport(ReportFile);
+             FileWriter myWriter = new FileWriter(ReportFile, true);
+             BufferedWriter bw = new BufferedWriter(myWriter);
+             myWriter.write("The total profits are: $"+Total);
+             myWriter.close();
+         } catch (IOException ex) {
+             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }//GEN-LAST:event_ManagerRoomReportButtonActionPerformed
 
     /**
      * @param args the command line arguments
