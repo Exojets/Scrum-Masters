@@ -33,16 +33,16 @@ public class Account {
         while(sc.hasNext()){
             temp = sc.nextInt();
             concatTemp = months[temp - 1];
-            output.concat(concatTemp + " ");
+            output = output.concat(concatTemp + " ");
             concatTemp = sc.next();
-            output.concat(concatTemp);
+            output = output.concat(concatTemp);
             temp = sc.nextInt();
             concatTemp = switch (temp) {
                 case 1 -> ", Executive Room";
                 case 2 -> ", Extravagant Room";
                 default -> ", Opulent Room";
             };
-            output.concat(concatTemp + "\n");
+            output = output.concat(concatTemp + "\n");
         }
         return output;
     }
