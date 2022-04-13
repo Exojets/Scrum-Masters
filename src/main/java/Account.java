@@ -13,6 +13,8 @@ import java.util.Scanner;
 
 public class Account {
     private String username, password, reservations, notifications;
+    private Boolean managerFlag;
+    private String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
     
     public Account(String name) throws Exception {
         File file = new File((name + ".txt"));
@@ -21,6 +23,28 @@ public class Account {
         password = sc.nextLine();
         reservations = sc.nextLine();
         notifications = sc.nextLine();
+        managerFlag = sc.nextBoolean();
+    }
+    
+    public String checkReservations(){
+        String output = "", concatTemp;
+        Scanner sc = new Scanner(reservations);
+        int temp;
+        while(sc.hasNext()){
+            temp = sc.nextInt();
+            concatTemp = months[temp - 1];
+            output = output.concat(concatTemp + " ");
+            concatTemp = sc.next();
+            output = output.concat(concatTemp);
+            temp = sc.nextInt();
+            concatTemp = switch (temp) {
+                case 1 -> ", Executive Room";
+                case 2 -> ", Extravagant Room";
+                default -> ", Opulent Room";
+            };
+            output = output.concat(concatTemp + "\n");
+        }
+        return output;
     }
     
     public String usernameGet(){
@@ -45,5 +69,9 @@ public class Account {
     
     public void notificationsSet(String newNotifications){
         notifications = newNotifications;
+    }
+    
+    public Boolean managerFlagGet(){
+        return managerFlag;
     }
 }
