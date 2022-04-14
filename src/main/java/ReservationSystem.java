@@ -40,7 +40,7 @@ public class ReservationSystem {
            int MonthPrint=month+1;
            int DayPrint=day+1;
             accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"");
-            //accountTemp.notificationSet(accountTemp.notificationGet()+ "There is a new notification!");
+            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification! ");
             
             // access the user and room files
             File userfile = new File((accountTemp.usernameGet()+".txt")); 
@@ -58,6 +58,7 @@ public class ReservationSystem {
             writeUserFile.write(accountTemp.passwordGet()+"\n"); 
             writeUserFile.write(accountTemp.reservationsGet()+"\n");
             writeUserFile.write(accountTemp.notificationsGet()+"\n");
+            writeUserFile.write(accountTemp.managerFlagGet().toString());
             writeUserFile.close();
         
            //write to the new room file

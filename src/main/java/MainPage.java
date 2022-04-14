@@ -34,16 +34,13 @@ public class MainPage extends javax.swing.JFrame {
         Room3 = new Room("room3");
         Reserver=new ReservationSystem(User);
         //////////////temporary until buttons will be used
-        CheckReservationsAndNotifications.setVisible(false);
         ChangeReservationDate.setVisible(false);
         RoomCancelButton.setVisible(false);
         MonthCancelInput.setVisible(false);
         DayCancelInput.setVisible(false);
         RoomSelectCancelInput.setVisible(false);
-        //code snippet to show managers their special button
-        //need to find a place to put the flag for managerliness
-        Boolean ManagerAccount=true;
-        if (ManagerAccount!=true){
+        //makes sure the user is a manager before revealing the report creator button
+        if (!User.managerFlagGet()){
           ManagerRoomReportButton.setVisible(false);
         }
     }
@@ -272,23 +269,23 @@ public class MainPage extends javax.swing.JFrame {
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
       
-       String text = jComboBox1.getSelectedItem().toString();
+       String Text = jComboBox1.getSelectedItem().toString();
        //int Budget = Integer.parseInt(text);
        //compares price of each room to budget, opens a page for each room which is within nightly budget
-       if ("Executive Room($500)".equals(text)){
+       if ("Executive Room($500)".equals(Text)){
        new RoomDetails(Room1, 1).setVisible(true);
        }
-       if ("Extravagant Room($1000)".equals(text)){
+       if ("Extravagant Room($1000)".equals(Text)){
         new RoomDetails(Room2, 2).setVisible(true);
        }
-       if ("Opulent Room($1500)".equals(text)){
+       if ("Opulent Room($1500)".equals(Text)){
          new RoomDetails(Room3, 3).setVisible(true);
        }
     }//GEN-LAST:event_SearchRoomButtonActionPerformed
 //opens the current reservations and notifications for account, then clears notifications
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
         //doesn't exist yet, is here for organization purposes
-        // new Notifications(User.notificationsGet(), User.reservationsCheck()).setVisible(true);
+        new Notifications(User.notificationsGet(), User.checkReservations()).setVisible(true);
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
 
@@ -373,7 +370,9 @@ public class MainPage extends javax.swing.JFrame {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void ManagerRoomReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerRoomReportButtonActionPerformed
-         try {                                                        
+        //deletes and recreates the report file, then calculates the total value of reserved rooms
+        //prints that value after each room has reported its value
+        try {                                                        
              int Total=0;
              File ReportFile= new File("Report.txt");
              ReportFile.createNewFile();

@@ -173,6 +173,7 @@ public class LoginPage extends javax.swing.JFrame {
               bw.newLine();
               bw.newLine();
               bw.newLine();
+              bw.write("false");
               bw.close();
               } else {
                 System.out.println("File already exists.");
