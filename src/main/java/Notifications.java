@@ -17,7 +17,7 @@ public class Notifications extends javax.swing.JFrame {
     }
     public Notifications(String Notifications, String Reservations) {
         initComponents();
-        jTextArea1.setText(Notifications);
+        jTextArea2.setText(Notifications);
         jTextArea1.setText(Reservations);
         
     }
