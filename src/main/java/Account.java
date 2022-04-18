@@ -47,6 +47,17 @@ public class Account {
         return output;
     }
     
+    public String checkNotifications(){
+        String output = "", temp;
+        Scanner sc = new Scanner(notifications);
+        sc.useDelimiter("-");
+        while(sc.hasNext()){
+            temp = sc.next();
+            output = output.concat(temp + "\n");
+        }
+        return output;
+    }
+    
     public String usernameGet(){
         return username;
     }
