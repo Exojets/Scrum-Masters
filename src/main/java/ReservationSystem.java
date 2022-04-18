@@ -21,7 +21,7 @@ import java.util.Scanner;
 public class ReservationSystem {
    // account and room constructors
     Account accountTemp;
-    room roomTemp;
+    Room roomTemp;
     
      ReservationSystem(){
         
@@ -33,14 +33,14 @@ public class ReservationSystem {
 
      //account will be a string
      //room would be 2 int for month and for day
-    public String makeReservation(room r, int month, int day, int roomNumber) throws Exception{
-        roomTemp=r;
+    public String makeReservation(Room RoomReserve , int month, int day, int roomNumber) throws Exception{
+        roomTemp=RoomReserve;
         String returnValue = "No Reservation Made"; // no reservation has been made
        if (roomTemp.availabilityGet(month , day) > 0){
            int MonthPrint=month+1;
            int DayPrint=day+1;
-            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"");
-            //accountTemp.notificationSet(accountTemp.notificationGet()+ "There is a new notification!");
+            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"-");
+            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
             
             // access the user and room files
             File userfile = new File((accountTemp.usernameGet()+".txt")); 
@@ -78,6 +78,63 @@ public class ReservationSystem {
     return returnValue;
     }
        
+    public void cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
+
+        String reconstruction = "";
+        String target = "";
+        String temp;
+        boolean cancelled = false;
+        
+        target = target.concat(Integer.toString(month)+" ");
+        target = target.concat(Integer.toString(day)+" ");
+        target = target.concat(Integer.toString(RoomNumber)+" ");
+        
+        File userfile = new File((accountTemp.usernameGet()+".txt"));
+        FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
+        
+        File roomfile = new File ("Room"+RoomNumber+".txt");
+        FileWriter writeRoomFile = new FileWriter("Room"+RoomNumber+".txt");
+        
+        Scanner scanner = new Scanner(accountTemp.reservationsGet()); 
+        scanner.useDelimiter("-");
+        while(scanner.hasNext() ){
+        temp = scanner.next();
+        if (!target.equals(temp)||(cancelled==true)){
+            reconstruction = reconstruction.concat(temp);
+        }
+        else{
+            cancelled = true;
+        }
+        
+        }
+        
+        accountTemp.reservationsSet(reconstruction);
+        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+        
+         userfile.delete(); 
+         userfile.createNewFile();
+         roomfile.delete();
+         roomfile.createNewFile();
+            
+         writeUserFile.write(accountTemp.passwordGet()+"\n"); 
+         writeUserFile.write(accountTemp.reservationsGet()+"\n");
+         writeUserFile.write(accountTemp.notificationsGet()+"\n");
+         writeUserFile.close();
+         
+         writeRoomFile.write(roomTemp.costGet()+"\n");
+         writeRoomFile.write(roomTemp.amenitiesGet()+"\n");
+        
+        
+        //String cancel = accountTemp.reservationsGet().replaceAll(cancelMonth,"");
+         
+          roomTemp.availabilitySet(month,day, 1); 
+        
+            for (int monthIndex = 0; monthIndex < 12 ;monthIndex++) {
+                for (int dayIndex = 0; dayIndex < 31; dayIndex++){
+                    writeRoomFile.write(roomTemp.availabilityGet(monthIndex,dayIndex)+" ");
+                }
+            }
+    }
     
     /* user text password, reservation, notifications
     room text cost amenities, availabilities

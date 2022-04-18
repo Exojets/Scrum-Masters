@@ -14,9 +14,9 @@ import java.util.logging.Logger;
  */
 public class MainPage extends javax.swing.JFrame {
      Account User;
-     room Room1;
-     room Room2;
-     room Room3;
+     Room Room1;
+     Room Room2;
+     Room Room3;
      ReservationSystem Reserver;
      
     public MainPage() {
@@ -25,9 +25,9 @@ public class MainPage extends javax.swing.JFrame {
     public MainPage(String Username) throws Exception {
         initComponents();
         User=new Account(Username);
-        Room1 = new room("room1");
-        Room2 = new room("room2");
-        Room3 = new room("room3");
+        Room1 = new Room("room1");
+        Room2 = new Room("room2");
+        Room3 = new Room("room3");
         Reserver=new ReservationSystem(User);
         //////////////temporary until buttons will be used
         CheckReservationsAndNotifications.setVisible(false);

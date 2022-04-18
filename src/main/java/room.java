@@ -3,13 +3,13 @@
 import java.io.File;
 import java.util.Scanner;
 
-public class room {
+public class Room {
    private String amenities;
    private int cost;
    private int[][] availability = new int[12][31];
 
    
-   public room(String name) throws Exception {
+   public Room(String name) throws Exception {
       
       Scanner sc = new Scanner(new File(name+".txt"));
       

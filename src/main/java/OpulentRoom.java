@@ -11,7 +11,7 @@ import javax.swing.JLabel;
  * @author Groe
  */
 public class OpulentRoom extends javax.swing.JFrame {
-    room Opulent;
+    Room Opulent;
     JLabel labels[]=new JLabel[31];
     String RoomType;
     /**
@@ -20,7 +20,7 @@ public class OpulentRoom extends javax.swing.JFrame {
     public OpulentRoom() {
         initComponents();
     }
-    public OpulentRoom(room RoomRecieved, int RoomTypeSet) {
+    public OpulentRoom(Room RoomRecieved, int RoomTypeSet) {
         Opulent=RoomRecieved;
         if (RoomTypeSet==1)
             RoomType="Executive Room";
