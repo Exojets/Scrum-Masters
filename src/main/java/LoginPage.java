@@ -120,33 +120,26 @@ public class LoginPage extends javax.swing.JFrame {
            //if either fail, do nothing
            if (TempFileStorage.isFile())
            {
-                BufferedReader Buff = null;
-                 try {
-                     //open the file
-                     Buff = new BufferedReader(new FileReader(Filer)); 
-                     String text = Buff.readLine();
-                     if(text.equals(Password)){
-                         //close window and instantiate mainpage with parameter username
-                         dispose();
-                         try {
-                             new MainPage(Username).setVisible(true); 
-                         } catch (Exception ex) {
-                             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
-                         }
-                     }
-                 } catch (FileNotFoundException ex) {
-                     Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
-                 } catch (IOException ex) {
-                     Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
-                 } finally {
-                     try {
-                         Buff.close();
-                     } catch (IOException ex) {
-                         Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
-                     }
-                 }
-
+               try {
+                   BufferedReader Buff = null;
+                   //open the file
+                   Buff = new BufferedReader(new FileReader(Filer));
+                   String text = Buff.readLine();
+                   if(text.equals(Password)){
+                       //close window and instantiate mainpage with parameter username
+                       dispose();
+                       new MainPage(Username).setVisible(true);
+                   }
+                   Buff.close();
+               } catch (FileNotFoundException ex) {
+                   Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (IOException ex) {
+                   Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+               } catch (Exception ex) {
+                   Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+               }
             }
+
         }
     }//GEN-LAST:event_LoginButtonActionPerformed
 
