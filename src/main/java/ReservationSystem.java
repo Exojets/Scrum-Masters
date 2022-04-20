@@ -39,7 +39,7 @@ public class ReservationSystem {
        if (roomTemp.availabilityGet(month , day) > 0){
            int MonthPrint=month+1;
            int DayPrint=day+1;
-            accountTemp.reservationsSet(accountTemp.reservationsGet()+ " " + MonthPrint +" " + DayPrint+" " + roomNumber +"-");
+            accountTemp.reservationsSet(accountTemp.reservationsGet() + MonthPrint +" " + DayPrint+" " + roomNumber +"-");
             accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
             
             // access the user and room files
@@ -78,15 +78,16 @@ public class ReservationSystem {
     return returnValue;
     }
        
-    public void cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
-
+    public String cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
+        roomTemp = RoomCancel;
+        String returnValue = "No Cancellation Made";
         String reconstruction = "";
         String target = "";
         String temp;
         boolean cancelled = false;
         
-        target = target.concat(Integer.toString(month)+" ");
-        target = target.concat(Integer.toString(day)+" ");
+        target = target.concat(Integer.toString(month + 1)+" ");
+        target = target.concat(Integer.toString(day +1)+" ");
         target = target.concat(Integer.toString(RoomNumber)+" ");
         
         File userfile = new File((accountTemp.usernameGet()+".txt"));
@@ -100,7 +101,7 @@ public class ReservationSystem {
         while(scanner.hasNext() ){
         temp = scanner.next();
         if (!target.equals(temp)||(cancelled==true)){
-            reconstruction = reconstruction.concat(temp);
+            reconstruction = reconstruction.concat(temp + "-");
         }
         else{
             cancelled = true;
@@ -134,7 +135,16 @@ public class ReservationSystem {
                     writeRoomFile.write(roomTemp.availabilityGet(monthIndex,dayIndex)+" ");
                 }
             }
+            writeRoomFile.close();
+            if ( cancelled == false)
+            returnValue = "Reservation Does not exist!";
+            else if (cancelled == true)
+              returnValue = " Reservation cancelled";  
+                
+            return returnValue;
     }
+    
+
     
     /* user text password, reservation, notifications
     room text cost amenities, availabilities
