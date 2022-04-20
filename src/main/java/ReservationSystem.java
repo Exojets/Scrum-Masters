@@ -141,8 +141,9 @@ public class ReservationSystem {
                     writeRoomFile.write(roomTemp.availabilityGet(monthIndex,dayIndex)+" ");
                 }
             }
+            
+            } 
             writeRoomFile.close();
-            }   
             return returnValue;
     }
     
