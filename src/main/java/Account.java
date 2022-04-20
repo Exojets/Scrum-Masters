@@ -27,17 +27,21 @@ public class Account {
     }
     
     public String checkReservations(){
-        String output = "", concatTemp;
+        String output = "", concatTemp, tempString;
+        int tempInt;
         Scanner sc = new Scanner(reservations);
-        int temp;
+        Scanner sc2;
+        sc.useDelimiter("-");
         while(sc.hasNext()){
-            temp = sc.nextInt();
-            concatTemp = months[temp - 1];
+            tempString = sc.next();
+            sc2 = new Scanner(tempString);
+            tempInt = sc2.nextInt();
+            concatTemp = months[tempInt - 1];
             output = output.concat(concatTemp + " ");
-            concatTemp = sc.next();
+            concatTemp = Integer.toString(sc2.nextInt());
             output = output.concat(concatTemp);
-            temp = sc.nextInt();
-            concatTemp = switch (temp) {
+            tempInt = sc2.nextInt();
+            concatTemp = switch (tempInt) {
                 case 1 -> ", Executive Room";
                 case 2 -> ", Extravagant Room";
                 default -> ", Opulent Room";
