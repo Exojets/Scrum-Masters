@@ -141,16 +141,52 @@ public class ReservationSystem {
                     writeRoomFile.write(roomTemp.availabilityGet(monthIndex,dayIndex)+" ");
                 }
             }
-            
-            } 
             writeRoomFile.close();
+            } 
+            
             return returnValue;
     }
     
+    public String changeReservation (Room RoomCancel, Room RoomReserve, int MonthCancel, int MonthReserve, int DayCancel, int DayReserve, int RoomNumberCancel, int RoomNumberReserve) throws Exception {
+        
+        String target = "";
+        String temp;
+        Boolean reservationExists = false;
+        String returnValue;
+        
+        target = target.concat(Integer.toString(MonthCancel + 1)+" ");
+        target = target.concat(Integer.toString(DayCancel +1)+" ");
+        target = target.concat(Integer.toString(RoomNumberCancel));
+        
+        Scanner scanner = new Scanner(accountTemp.reservationsGet()); 
+        scanner.useDelimiter("-");
+        while(scanner.hasNext() ){
+        temp = scanner.next();
+            if (target.equals(temp)){
+                reservationExists = true;
+         
+            }
+        }
+        if (reservationExists == true){
+            roomTemp = RoomReserve;
+            if (roomTemp.availabilityGet(MonthReserve , DayReserve) > 0) {
+              cancelReservation(RoomCancel, MonthCancel,DayCancel,RoomNumberCancel);
+              makeReservation(RoomReserve,MonthReserve,DayReserve,RoomNumberReserve);
+              returnValue = "Reservation successfully changed!";
+            }
+            else
+                returnValue = "No availablity for date selected";
+        }
+        else
+            returnValue = "Reservation does not exist!";
+        
+        return returnValue;
+        
+            
+    
 
     
-    /* user text password, reservation, notifications
-    room text cost amenities, availabilities
-    */
 
+
+    }
 }
