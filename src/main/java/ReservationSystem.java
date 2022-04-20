@@ -108,7 +108,12 @@ public class ReservationSystem {
         }
         
         }
-        
+       
+        if ( cancelled == false)
+        returnValue = "Reservation Does not exist!";
+        else {
+        returnValue ="Reservation cancelled"; 
+        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
         accountTemp.reservationsSet(reconstruction);
         
         
@@ -137,11 +142,6 @@ public class ReservationSystem {
                 }
             }
             writeRoomFile.close();
-            if ( cancelled == false)
-            returnValue = "Reservation Does not exist!";
-            else {
-            returnValue ="Reservation cancelled"; 
-            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
             }   
             return returnValue;
     }
