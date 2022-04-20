@@ -110,7 +110,7 @@ public class ReservationSystem {
         }
         
         accountTemp.reservationsSet(reconstruction);
-        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+        
         
         
          userfile.delete(); 
@@ -139,9 +139,10 @@ public class ReservationSystem {
             writeRoomFile.close();
             if ( cancelled == false)
             returnValue = "Reservation Does not exist!";
-            else
-              returnValue ="Reservation cancelled";  
-                
+            else {
+            returnValue ="Reservation cancelled"; 
+            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+            }   
             return returnValue;
     }
     
