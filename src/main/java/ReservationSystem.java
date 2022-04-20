@@ -80,7 +80,7 @@ public class ReservationSystem {
        
     public String cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
         roomTemp = RoomCancel;
-        String returnValue = "No Cancellation Made";
+        String returnValue;
         String reconstruction = "";
         String target = "";
         String temp;
@@ -110,6 +110,7 @@ public class ReservationSystem {
         }
         
         accountTemp.reservationsSet(reconstruction);
+        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
         
         
          userfile.delete(); 
@@ -138,8 +139,8 @@ public class ReservationSystem {
             writeRoomFile.close();
             if ( cancelled == false)
             returnValue = "Reservation Does not exist!";
-            else if (cancelled == true)
-              returnValue = " Reservation cancelled";  
+            else
+              returnValue ="Reservation cancelled";  
                 
             return returnValue;
     }
