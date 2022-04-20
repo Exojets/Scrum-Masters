@@ -88,7 +88,7 @@ public class ReservationSystem {
         
         target = target.concat(Integer.toString(month + 1)+" ");
         target = target.concat(Integer.toString(day +1)+" ");
-        target = target.concat(Integer.toString(RoomNumber)+" ");
+        target = target.concat(Integer.toString(RoomNumber));
         
         File userfile = new File((accountTemp.usernameGet()+".txt"));
         FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
@@ -110,7 +110,7 @@ public class ReservationSystem {
         }
         
         accountTemp.reservationsSet(reconstruction);
-        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+        
         
          userfile.delete(); 
          userfile.createNewFile();
