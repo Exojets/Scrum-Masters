@@ -33,12 +33,6 @@ public class MainPage extends javax.swing.JFrame {
         Room2 = new Room("room2");
         Room3 = new Room("room3");
         Reserver=new ReservationSystem(User);
-        //////////////temporary until buttons will be used
-        ChangeReservationDate.setVisible(false);
-        RoomCancelButton.setVisible(false);
-        MonthCancelInput.setVisible(false);
-        DayCancelInput.setVisible(false);
-        RoomSelectCancelInput.setVisible(false);
         //makes sure the user is a manager before revealing the report creator button
         if (!User.managerFlagGet()){
           ManagerRoomReportButton.setVisible(false);
@@ -288,7 +282,11 @@ public class MainPage extends javax.swing.JFrame {
         new Notifications(User.notificationsGet(), User.checkReservations()).setVisible(true);
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
-
+/**
+ * Makes sure dates exist, and if so, calls function to reserve a room with those as parameters
+ 
+ 
+ */
     private void RoomReserveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomReserveButtonActionPerformed
 
         int MonthtoReserve=Integer.parseInt(MonthReserveInput.getText());
@@ -298,7 +296,7 @@ public class MainPage extends javax.swing.JFrame {
         //checks whether the credit card is the proper length, and whether the day, month and room a reservation is desired for exists
         //if so, attempts to reserve the room
         //MonthtoReserve and DaytoReserve are passed as value -1 to account for arrays starting at [0][0]
-        if(MonthtoReserve>=0&&MonthtoReserve<=12&&DaytoReserve>=0&&DaytoReserve<=31&&(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15)){
+        if(MonthtoReserve>0&&MonthtoReserve<=12&&DaytoReserve>0&&DaytoReserve<=31&&(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15)){
             switch (RoomtoReserve) {
                 case 1:
                     try {
@@ -340,13 +338,110 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DayCancelInputActionPerformed
 
+    /**
+     * RoomCancelButtonActionPerformed
+     * cancels a reservation based on the inputs from the text boxes
+     *  
+     */
     private void RoomCancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomCancelButtonActionPerformed
-        // TODO add your handling code here:
-        
+       int RoomToCancel=Integer.parseInt(RoomSelectCancelInput.getText());
+       int DayToCancel=Integer.parseInt(DayCancelInput.getText());
+       int MonthToCancel=Integer.parseInt(MonthCancelInput.getText());
+       //checks to ensure the date exists
+       if (MonthToCancel>0&&MonthToCancel<=12&&DayToCancel>0&&DayToCancel<=31){
+           //if it does, attempts to cancel a reservation. Converts date into an index to pass for the cancel function
+        switch (RoomToCancel) {
+                case 1:
+                    try {
+                        ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                case 2:
+                    try {
+                       ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                case 3:
+                    try {
+                        ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }       break;
+                default:
+                //notifies if the room doesn't exist
+                    ReservationSuccessorFail.setText("This room code does not exist.");
+                    break;
+            }
+       }
+       else{
+           //notifies if the date does not exist
+           ReservationSuccessorFail.setText("This date does not exist");
+       }
     }//GEN-LAST:event_RoomCancelButtonActionPerformed
+    /**
+     *  ChangeReservationDateActionPerformed
+     * checks to make sure both reservation date and cancel date, as well as associated rooms, exist
+     * if they do, makes sure the card exists.
+     * if all exist, sends the values as indices to the function
 
+
+     */
     private void ChangeReservationDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChangeReservationDateActionPerformed
-        // TODO add your handling code here:
+       int RoomToCancel=Integer.parseInt(RoomSelectCancelInput.getText());
+       int DayToCancel=Integer.parseInt(DayCancelInput.getText());
+       int MonthToCancel=Integer.parseInt(MonthCancelInput.getText());
+       int MonthtoReserve=Integer.parseInt(MonthReserveInput.getText());
+       int DaytoReserve=Integer.parseInt(DayReserveInput.getText());
+       int RoomtoReserve=Integer.parseInt(RoomSelectInput.getText());
+       Boolean ValidRooms=true;
+       Room ReserveRoomRequest=new Room();
+       //check to set room to pass
+         switch (RoomtoReserve) {
+             case 1 -> ReserveRoomRequest=Room1;
+             case 2 -> ReserveRoomRequest=Room2;
+             case 3 -> ReserveRoomRequest=Room3;
+             default -> {
+                     ValidRooms=false;
+             }
+         }
+         Room CancelRoomRequest=new Room();
+         switch (RoomToCancel) {
+             case 1 -> CancelRoomRequest=Room1;
+             case 2 -> CancelRoomRequest=Room2;
+             case 3 -> CancelRoomRequest=Room3;
+             default -> {
+                     ValidRooms=false;
+             }
+         }
+        //check to make sure the cancel dates and rooms exist
+       BigInteger CreditCardCheck=new BigInteger(CreditCardEntry.getText());
+        if (MonthToCancel>0&&MonthToCancel<=12&&DayToCancel>0&&DayToCancel<=31&&ValidRooms==true){
+            //check if the reserve date exists
+            if(MonthtoReserve>0&&MonthtoReserve<=12&&DaytoReserve>0&&DaytoReserve<=31){
+                //check to see if card exists
+                if(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15){
+                    try {
+                        //sends dates as index for changereservation function
+                        System.out.print(DaytoReserve+"  "+MonthtoReserve+" "+RoomtoReserve);
+                        ReservationSuccessorFail.setText(Reserver.changeReservation(CancelRoomRequest, ReserveRoomRequest, MonthToCancel-1, MonthtoReserve-1, DayToCancel-1, DaytoReserve-1, RoomToCancel, RoomtoReserve));
+                    } catch (Exception ex) {
+                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                //notify of relevant error
+                else{
+                    ReservationSuccessorFail.setText("Invalid Card");
+                }
+            }
+            else{
+                 ReservationSuccessorFail.setText("Reserve date invalid");
+            }
+        }
+        else{
+            ReservationSuccessorFail.setText("Room or Cancel date invalid");
+        }
     }//GEN-LAST:event_ChangeReservationDateActionPerformed
 
     private void RoomSelectCancelInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomSelectCancelInputActionPerformed
@@ -368,7 +463,9 @@ public class MainPage extends javax.swing.JFrame {
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
-
+/**
+ * Produces available rooms during each day of year, as well as total profits from rooms both total and individually.
+ */
     private void ManagerRoomReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerRoomReportButtonActionPerformed
         //deletes and recreates the report file, then calculates the total value of reserved rooms
         //prints that value after each room has reported its value
@@ -382,6 +479,7 @@ public class MainPage extends javax.swing.JFrame {
              Total+=Room3.roomReport(ReportFile);
              FileWriter myWriter = new FileWriter(ReportFile, true);
              BufferedWriter bw = new BufferedWriter(myWriter);
+             //appends total profits
              myWriter.write("The total profits are: $"+Total);
              myWriter.close();
          } catch (IOException ex) {

@@ -11,7 +11,7 @@ public class Room {
    private int Cost;
    private int[][] availability = new int[12][31];
 
-   
+   public Room(){}
    public Room(String name) throws Exception {
       
       codeName = name;
