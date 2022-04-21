@@ -40,7 +40,7 @@ public class ReservationSystem {
            int MonthPrint=month+1;
            int DayPrint=day+1;
             accountTemp.reservationsSet(accountTemp.reservationsGet() + MonthPrint +" " + DayPrint+" " + roomNumber +"-");
-            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!-");
             
             // access the user and room files
             File userfile = new File((accountTemp.usernameGet()+".txt")); 
@@ -58,6 +58,7 @@ public class ReservationSystem {
             writeUserFile.write(accountTemp.passwordGet()+"\n"); 
             writeUserFile.write(accountTemp.reservationsGet()+"\n");
             writeUserFile.write(accountTemp.notificationsGet()+"\n");
+            writeUserFile.write(String.valueOf(accountTemp.managerFlagGet()));
             writeUserFile.close();
         
            //write to the new room file
@@ -109,7 +110,7 @@ public class ReservationSystem {
         returnValue = "Reservation Does not exist!";
         else {
         returnValue ="Reservation cancelled"; 
-        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!");
+        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!-");
         accountTemp.reservationsSet(reconstruction);
         
         File userfile = new File((accountTemp.usernameGet()+".txt"));
@@ -126,6 +127,7 @@ public class ReservationSystem {
          writeUserFile.write(accountTemp.passwordGet()+"\n"); 
          writeUserFile.write(accountTemp.reservationsGet()+"\n");
          writeUserFile.write(accountTemp.notificationsGet()+"\n");
+         writeUserFile.write(String.valueOf(accountTemp.managerFlagGet()));
          writeUserFile.close();
          
          writeRoomFile.write(roomTemp.costGet()+"\n");
