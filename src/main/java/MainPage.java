@@ -1,6 +1,8 @@
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.math.BigInteger;
@@ -280,6 +282,22 @@ public class MainPage extends javax.swing.JFrame {
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
         //doesn't exist yet, is here for organization purposes
         new Notifications(User.notificationsGet(), User.checkReservations()).setVisible(true);
+        User.notificationsSet("");
+        File Userfile = new File (User.usernameGet()+".txt");
+         try {
+             FileWriter writeUserFile = new FileWriter(Userfile);
+             BufferedWriter bw = new BufferedWriter(writeUserFile);
+             bw.write(User.passwordGet());
+             bw.newLine();
+             bw.write(User.reservationsGet());
+             bw.newLine();
+             bw.write(User.notificationsGet());
+             bw.newLine();
+             bw.write(User.managerFlagGet().toString());
+             bw.close();
+         } catch (IOException ex) {
+             Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+         }
         
     }//GEN-LAST:event_CheckReservationsAndNotificationsActionPerformed
 /**
