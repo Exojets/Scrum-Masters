@@ -195,10 +195,10 @@ public class MainPage extends javax.swing.JFrame {
                                         .addGap(0, 0, Short.MAX_VALUE)))
                                 .addGap(69, 69, 69))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(3, 3, 3)
+                                .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SearchRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(CheckReservationsAndNotifications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -365,33 +365,40 @@ public class MainPage extends javax.swing.JFrame {
        int RoomToCancel=Integer.parseInt(RoomSelectCancelInput.getText());
        int DayToCancel=Integer.parseInt(DayCancelInput.getText());
        int MonthToCancel=Integer.parseInt(MonthCancelInput.getText());
+       BigInteger CreditCardCheck=new BigInteger(CreditCardEntry.getText());
        //checks to ensure the date exists
        if (MonthToCancel>0&&MonthToCancel<=12&&DayToCancel>0&&DayToCancel<=31){
+           //check credit card validity
+           if(CreditCardCheck.toString().length()==16||CreditCardCheck.toString().length()==15){
            //if it does, attempts to cancel a reservation. Converts date into an index to pass for the cancel function
-        switch (RoomToCancel) {
-                case 1:
-                    try {
-                        ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
-                    } catch (Exception ex) {
-                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-                    }       break;
-                case 2:
-                    try {
-                       ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
-                    } catch (Exception ex) {
-                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-                    }       break;
-                case 3:
-                    try {
-                        ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
-                    } catch (Exception ex) {
-                        Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
-                    }       break;
-                default:
-                //notifies if the room doesn't exist
-                    ReservationSuccessorFail.setText("This room code does not exist.");
-                    break;
-            }
+                switch (RoomToCancel) {
+                        case 1:
+                            try {
+                                ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                            } catch (Exception ex) {
+                                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                            }       break;
+                        case 2:
+                            try {
+                               ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                            } catch (Exception ex) {
+                                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                            }       break;
+                        case 3:
+                            try {
+                                ReservationSuccessorFail.setText(Reserver.cancelReservation(Room1, MonthToCancel-1, DayToCancel-1, RoomToCancel));
+                            } catch (Exception ex) {
+                                Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
+                            }       break;
+                        default:
+                        //notifies if the room doesn't exist
+                            ReservationSuccessorFail.setText("This room code does not exist.");
+                            break;
+                    }
+           }
+           else{
+               ReservationSuccessorFail.setText("Invalid card");
+           }
        }
        else{
            //notifies if the date does not exist
