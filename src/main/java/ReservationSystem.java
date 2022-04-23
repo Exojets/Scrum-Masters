@@ -22,6 +22,8 @@ public class ReservationSystem {
    // account and room constructors
     Account accountTemp;
     Room roomTemp;
+    private String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    private String[] roomNames = {"", "Executive Room", "Extravagant Room", "Opulent Room"};
     
      ReservationSystem(){
         
@@ -40,7 +42,7 @@ public class ReservationSystem {
            int MonthPrint=month+1;
            int DayPrint=day+1;
             accountTemp.reservationsSet(accountTemp.reservationsGet() + MonthPrint +" " + DayPrint+" " + roomNumber +"-");
-            accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!-");
+            accountTemp.notificationsSet(accountTemp.notificationsGet() + roomNames[roomNumber] + " reserved for " + months[month + 1] + " " + Integer.toString(day + 1) +  ".-");
             
             // access the user and room files
             File userfile = new File((accountTemp.usernameGet()+".txt")); 
@@ -110,7 +112,7 @@ public class ReservationSystem {
         returnValue = "Reservation Does not exist!";
         else {
         returnValue ="Reservation cancelled"; 
-        accountTemp.notificationsSet(accountTemp.notificationsGet()+ "There is a new notification!-");
+        accountTemp.notificationsSet(accountTemp.notificationsGet() + "Cancelled reservation for " + roomNames[RoomNumber] + " on " + months[month + 1] + " " + Integer.toString(day + 1) +  ".-");
         accountTemp.reservationsSet(reconstruction);
         
         File userfile = new File((accountTemp.usernameGet()+".txt"));

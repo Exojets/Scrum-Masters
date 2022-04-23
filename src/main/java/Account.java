@@ -15,6 +15,7 @@ public class Account {
     private String username, password, reservations, notifications;
     private Boolean managerFlag;
     private String[] months = {"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"};
+    private String[] roomNames = {"", "Executive Room", "Extravagant Room", "Opulent Room"};
     
     public Account(String name) throws Exception {
         File file = new File((name + ".txt"));
@@ -41,12 +42,8 @@ public class Account {
             concatTemp = Integer.toString(sc2.nextInt());
             output = output.concat(concatTemp);
             tempInt = sc2.nextInt();
-            concatTemp = switch (tempInt) {
-                case 1 -> ", Executive Room";
-                case 2 -> ", Extravagant Room";
-                default -> ", Opulent Room";
-            };
-            output = output.concat(concatTemp + "\n");
+            concatTemp = roomNames[tempInt];
+            output = output.concat(", " + concatTemp + "\n");
         }
         return output;
     }
