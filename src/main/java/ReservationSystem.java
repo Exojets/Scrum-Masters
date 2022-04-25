@@ -7,7 +7,7 @@
 
 
 /**
- *
+ * A class that is takes a month, day, and room type, and can create, cancel, or change a reservation, modifying the user's text file with the dates selected, and modifying the room text file with the availability of the room.  
  * @author Daniel
  */
 import java.io.File;
@@ -15,9 +15,7 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.util.Scanner;
  
-    /*modifying text files
-    makeReservation(roomType,date,username,availability)
-    */
+
 public class ReservationSystem {
    // account and room constructors
     Account accountTemp;
@@ -33,9 +31,17 @@ public class ReservationSystem {
         accountTemp=a;
     }
 
-     //account will be a string
-     //room would be 2 int for month and for day
-    public String makeReservation(Room RoomReserve , int month, int day, int roomNumber) throws Exception{
+
+    /**
+     * Takes a date the user inputs and modifies the user text file as well as change the availability in the room text file.
+     * @param RoomReserve the specific room type that the user wants to reserve 
+     * @param month The month that the user wants to make a reservation in
+     * @param day The specific day that the user wants to reserve
+     * @param roomNumber The available room of the specific room type that the user wants to reserve
+     * @return A message stating that either the reservation was made or the room was not available in that specific date.
+     * @throws Exception states that the text file does not exist 
+     */
+     public String makeReservation(Room RoomReserve , int month, int day, int roomNumber) throws Exception{
         roomTemp=RoomReserve;
         String returnValue = "No Reservation Made"; // no reservation has been made
        if (roomTemp.availabilityGet(month , day) > 0){
@@ -81,7 +87,16 @@ public class ReservationSystem {
     return returnValue;
     }
        
-    public String cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
+   /**
+    * Takes an existing reservation in the user text file and deletes it, changing the availability in the room text file
+    * @param RoomCancel the specific type of room that the user's existing reservation is linked to
+    * @param month the month that the reservation is in that the user wants to cancel
+    * @param day the specific day of the reservation that the user wants to cancel
+    * @param RoomNumber the room that the reservation was linked to that the user wants to cancel
+    * @return A message stating that either the reservation did not exist or that the reservation was canceled
+    * @throws Exception states that the text file does not exist
+    */
+     public String cancelReservation(Room RoomCancel, int month, int day, int RoomNumber) throws Exception{
         roomTemp = RoomCancel;
         String returnValue;
         String reconstruction = "";
@@ -89,12 +104,13 @@ public class ReservationSystem {
         String temp;
         boolean cancelled = false;
         
+        //convert integers to strings and combimes the different variables into a single string
         target = target.concat(Integer.toString(month + 1)+" ");
         target = target.concat(Integer.toString(day +1)+" ");
         target = target.concat(Integer.toString(RoomNumber));
         
         
-        
+       // search the file for the correct string 
         Scanner scanner = new Scanner(accountTemp.reservationsGet()); 
         scanner.useDelimiter("-");
         while(scanner.hasNext() ){
@@ -115,6 +131,7 @@ public class ReservationSystem {
         accountTemp.notificationsSet(accountTemp.notificationsGet() + "Cancelled reservation for " + roomNames[RoomNumber] + " on " + months[month + 1] + " " + Integer.toString(day + 1) +  ".-");
         accountTemp.reservationsSet(reconstruction);
         
+        // delete and recreate user and room text files
         File userfile = new File((accountTemp.usernameGet()+".txt"));
         FileWriter writeUserFile = new FileWriter(accountTemp.usernameGet()+".txt");
         
@@ -137,7 +154,7 @@ public class ReservationSystem {
         
         
         
-         
+         // adjust the room availability
           roomTemp.availabilitySet(month,day, 1); 
         
             for (int monthIndex = 0; monthIndex < 12 ;monthIndex++) {
@@ -151,13 +168,27 @@ public class ReservationSystem {
             return returnValue;
     }
     
-    public String changeReservation (Room RoomCancel, Room RoomReserve, int MonthCancel, int MonthReserve, int DayCancel, int DayReserve, int RoomNumberCancel, int RoomNumberReserve) throws Exception {
+    /**
+     * Takes an existing reservation and deletes the old date from the user file, replacing it with a new date and updating the availabilities in the room text file
+     * @param RoomCancel the specific type of room the reservation is linked to that the user wants to delete
+     * @param RoomReserve the specific type of room that the user wants the reservation to be made on
+     * @param MonthCancel the month the reservation is in that the user wants to cancel
+     * @param MonthReserve the month the user wants the new reservation to be in
+     * @param DayCancel the specific day of the old reservation that the user wants to cancel
+     * @param DayReserve the specific day that the user wants the new reservation to be
+     * @param RoomNumberCancel the room the old reservation was linked to that the user wants to cancel 
+     * @param RoomNumberReserve the room that the user wants the new reservation to be linked to 
+     * @return message stating that either reservation does not exist, room is not available, or that the reservation was successfully changed
+     * @throws Exception states that the text file does not exist
+     */
+     public String changeReservation (Room RoomCancel, Room RoomReserve, int MonthCancel, int MonthReserve, int DayCancel, int DayReserve, int RoomNumberCancel, int RoomNumberReserve) throws Exception {
         
         String target = "";
         String temp;
         Boolean reservationExists = false;
         String returnValue;
         
+        //
         target = target.concat(Integer.toString(MonthCancel + 1)+" ");
         target = target.concat(Integer.toString(DayCancel +1)+" ");
         target = target.concat(Integer.toString(RoomNumberCancel));
