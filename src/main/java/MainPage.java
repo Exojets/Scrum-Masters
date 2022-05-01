@@ -281,7 +281,7 @@ public class MainPage extends javax.swing.JFrame {
 //opens the current reservations and notifications for account, then clears notifications
     private void CheckReservationsAndNotificationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckReservationsAndNotificationsActionPerformed
         //doesn't exist yet, is here for organization purposes
-        new Notifications(User.notificationsGet(), User.checkReservations()).setVisible(true);
+        new Notifications(User.checkNotifications(), User.checkReservations()).setVisible(true);
         User.notificationsSet("");
         File Userfile = new File (User.usernameGet()+".txt");
          try {
