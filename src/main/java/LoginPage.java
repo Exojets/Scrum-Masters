@@ -23,7 +23,7 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
-        jLabel2.setVisible(false);
+        RegisterSuccessNotify.setVisible(false);
     }
 
     /**
@@ -38,9 +38,9 @@ public class LoginPage extends javax.swing.JFrame {
         UsernameField = new javax.swing.JTextField();
         PasswordField = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        LoginAndRegistration = new javax.swing.JLabel();
         RegisterButton = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        RegisterSuccessNotify = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -60,7 +60,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Login and Registration");
+        LoginAndRegistration.setText("Login and Registration");
 
         RegisterButton.setText("Register");
         RegisterButton.addActionListener(new java.awt.event.ActionListener() {
@@ -69,7 +69,7 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Account Created!");
+        RegisterSuccessNotify.setText("Account Created!");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,24 +87,24 @@ public class LoginPage extends javax.swing.JFrame {
                     .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
-                        .addComponent(jLabel1))
+                        .addComponent(LoginAndRegistration))
                     .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(jLabel2)))
+                        .addComponent(RegisterSuccessNotify)))
                 .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addComponent(jLabel1)
+                .addComponent(LoginAndRegistration)
                 .addGap(48, 48, 48)
                 .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addComponent(RegisterSuccessNotify)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginButton)
@@ -177,7 +177,7 @@ public class LoginPage extends javax.swing.JFrame {
               bw.newLine();
               bw.write("false");
               bw.close();
-              jLabel2.setVisible(true);
+              RegisterSuccessNotify.setVisible(true);
               } else {
                 System.out.println("File already exists.");
               }
@@ -224,11 +224,11 @@ public class LoginPage extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel LoginAndRegistration;
     private javax.swing.JButton LoginButton;
     private javax.swing.JTextField PasswordField;
     private javax.swing.JButton RegisterButton;
+    private javax.swing.JLabel RegisterSuccessNotify;
     private javax.swing.JTextField UsernameField;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

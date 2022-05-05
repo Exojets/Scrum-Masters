@@ -37,7 +37,7 @@ public class MainPage extends javax.swing.JFrame {
         Reserver=new ReservationSystem(User);
         //makes sure the user is a manager before revealing the report creator button
         if (!User.managerFlagGet()){
-          ManagerRoomReportButton.setVisible(false);
+          ManagerReportButton.setVisible(false);
         }
     }
 
@@ -50,10 +50,10 @@ public class MainPage extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        WelcomeLabel = new javax.swing.JLabel();
         SearchRoomButton = new javax.swing.JButton();
         CheckReservationsAndNotifications = new javax.swing.JButton();
-        ManagerRoomReportButton = new javax.swing.JButton();
+        ManagerReportButton = new javax.swing.JButton();
         RoomReserveButton = new javax.swing.JButton();
         MonthReserveInput = new javax.swing.JTextField();
         DayReserveInput = new javax.swing.JTextField();
@@ -65,11 +65,11 @@ public class MainPage extends javax.swing.JFrame {
         RoomSelectInput = new javax.swing.JTextField();
         ReservationSuccessorFail = new javax.swing.JLabel();
         CreditCardEntry = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        RoomDetailChoiceBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Welcome");
+        WelcomeLabel.setText("Welcome");
 
         SearchRoomButton.setText("Find a room");
         SearchRoomButton.addActionListener(new java.awt.event.ActionListener() {
@@ -85,10 +85,10 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        ManagerRoomReportButton.setText("Generate room report");
-        ManagerRoomReportButton.addActionListener(new java.awt.event.ActionListener() {
+        ManagerReportButton.setText("Generate room report");
+        ManagerReportButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ManagerRoomReportButtonActionPerformed(evt);
+                ManagerReportButtonActionPerformed(evt);
             }
         });
 
@@ -164,10 +164,10 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Executive Room($500)", "Extravagant Room($1000)", "Opulent Room($1500)" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        RoomDetailChoiceBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Executive Room($500)", "Extravagant Room($1000)", "Opulent Room($1500)" }));
+        RoomDetailChoiceBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                RoomDetailChoiceBoxActionPerformed(evt);
             }
         });
 
@@ -202,14 +202,14 @@ public class MainPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SearchRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(CheckReservationsAndNotifications, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(ManagerRoomReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(ManagerReportButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(RoomDetailChoiceBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(RoomReserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(RoomCancelButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                                 .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.Alignment.LEADING)))
@@ -221,7 +221,7 @@ public class MainPage extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
+                    .addComponent(WelcomeLabel)
                     .addComponent(RoomReserveButton))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,13 +234,13 @@ public class MainPage extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(RoomSelectInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(RoomDetailChoiceBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(CheckReservationsAndNotifications)
                         .addGap(103, 103, 103)
-                        .addComponent(ManagerRoomReportButton)
+                        .addComponent(ManagerReportButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(ChangeReservationDate)
@@ -265,7 +265,7 @@ public class MainPage extends javax.swing.JFrame {
     private void SearchRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchRoomButtonActionPerformed
       //converts text to an integer
       
-       String Text = jComboBox1.getSelectedItem().toString();
+       String Text = RoomDetailChoiceBox.getSelectedItem().toString();
        //int Budget = Integer.parseInt(text);
        //compares price of each room to budget, opens a page for each room which is within nightly budget
        if ("Executive Room($500)".equals(Text)){
@@ -485,13 +485,13 @@ public class MainPage extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_DayReserveInputActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void RoomDetailChoiceBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RoomDetailChoiceBoxActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_RoomDetailChoiceBoxActionPerformed
 /**
  * Produces available rooms during each day of year, as well as total profits from rooms both total and individually.
  */
-    private void ManagerRoomReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerRoomReportButtonActionPerformed
+    private void ManagerReportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManagerReportButtonActionPerformed
         //deletes and recreates the report file, then calculates the total value of reserved rooms
         //prints that value after each room has reported its value
         try {                                                        
@@ -510,7 +510,7 @@ public class MainPage extends javax.swing.JFrame {
          } catch (IOException ex) {
              Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
          }
-    }//GEN-LAST:event_ManagerRoomReportButtonActionPerformed
+    }//GEN-LAST:event_ManagerReportButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -553,16 +553,16 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JTextField CreditCardEntry;
     private javax.swing.JTextField DayCancelInput;
     private javax.swing.JTextField DayReserveInput;
-    private javax.swing.JButton ManagerRoomReportButton;
+    private javax.swing.JButton ManagerReportButton;
     private javax.swing.JTextField MonthCancelInput;
     private javax.swing.JTextField MonthReserveInput;
     private javax.swing.JLabel ReservationSuccessorFail;
     private javax.swing.JButton RoomCancelButton;
+    private javax.swing.JComboBox<String> RoomDetailChoiceBox;
     private javax.swing.JButton RoomReserveButton;
     private javax.swing.JTextField RoomSelectCancelInput;
     private javax.swing.JTextField RoomSelectInput;
     private javax.swing.JButton SearchRoomButton;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel WelcomeLabel;
     // End of variables declaration//GEN-END:variables
 }

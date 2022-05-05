@@ -56,8 +56,8 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="SearchRoomButton" max="32767" attributes="0"/>
                           <Component id="CheckReservationsAndNotifications" max="32767" attributes="0"/>
-                          <Component id="ManagerRoomReportButton" max="32767" attributes="0"/>
-                          <Component id="jComboBox1" alignment="0" max="32767" attributes="0"/>
+                          <Component id="ManagerReportButton" max="32767" attributes="0"/>
+                          <Component id="RoomDetailChoiceBox" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" attributes="0">
@@ -65,7 +65,7 @@
                           <Group type="102" attributes="0">
                               <Component id="RoomReserveButton" min="-2" pref="138" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jLabel1" min="-2" pref="60" max="-2" attributes="0"/>
+                              <Component id="WelcomeLabel" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                           <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                               <Component id="RoomCancelButton" alignment="0" pref="160" max="32767" attributes="0"/>
@@ -84,7 +84,7 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="WelcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="RoomReserveButton" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -100,7 +100,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="RoomSelectInput" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jComboBox1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RoomDetailChoiceBox" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -109,7 +109,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="CheckReservationsAndNotifications" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="103" max="-2" attributes="0"/>
-                      <Component id="ManagerRoomReportButton" min="-2" max="-2" attributes="0"/>
+                      <Component id="ManagerReportButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
@@ -136,7 +136,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel1">
+    <Component class="javax.swing.JLabel" name="WelcomeLabel">
       <Properties>
         <Property name="text" type="java.lang.String" value="Welcome"/>
       </Properties>
@@ -157,12 +157,12 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CheckReservationsAndNotificationsActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="ManagerRoomReportButton">
+    <Component class="javax.swing.JButton" name="ManagerReportButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Generate room report"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManagerRoomReportButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ManagerReportButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="RoomReserveButton">
@@ -250,7 +250,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreditCardEntryActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JComboBox" name="jComboBox1">
+    <Component class="javax.swing.JComboBox" name="RoomDetailChoiceBox">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="3">
@@ -261,7 +261,7 @@
         </Property>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomDetailChoiceBoxActionPerformed"/>
       </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
