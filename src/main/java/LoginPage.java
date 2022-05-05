@@ -23,6 +23,7 @@ public class LoginPage extends javax.swing.JFrame {
      */
     public LoginPage() {
         initComponents();
+        jLabel2.setVisible(false);
     }
 
     /**
@@ -39,6 +40,7 @@ public class LoginPage extends javax.swing.JFrame {
         LoginButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         RegisterButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,6 +69,8 @@ public class LoginPage extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setText("Account Created!");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,7 +88,10 @@ public class LoginPage extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(jLabel1))
-                    .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(jLabel2)))
                 .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
@@ -96,7 +103,9 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(LoginButton)
                     .addComponent(RegisterButton))
@@ -168,6 +177,7 @@ public class LoginPage extends javax.swing.JFrame {
               bw.newLine();
               bw.write("false");
               bw.close();
+              jLabel2.setVisible(true);
               } else {
                 System.out.println("File already exists.");
               }
@@ -219,5 +229,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JButton RegisterButton;
     private javax.swing.JTextField UsernameField;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }
