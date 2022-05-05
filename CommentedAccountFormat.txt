@@ -1,0 +1,4 @@
+Password //user password
+//line of reservations, arranged with the order numerical month, numerical date, numerical room code, each delineated by '-'
+//line for notifications, delineated by '-'
+false//states if user is manager
