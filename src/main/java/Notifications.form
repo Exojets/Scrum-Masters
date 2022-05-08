@@ -29,10 +29,10 @@
                   <Component id="jScrollPane5" min="-2" max="-2" attributes="0"/>
                   <Component id="jScrollPane4" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="49" max="32767" attributes="0"/>
+              <EmptySpace pref="53" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane6" alignment="1" min="-2" pref="316" max="-2" attributes="0"/>
-                  <Component id="jScrollPane3" alignment="1" min="-2" pref="316" max="-2" attributes="0"/>
+                  <Component id="jScrollPane6" alignment="1" min="-2" pref="357" max="-2" attributes="0"/>
+                  <Component id="jScrollPane3" alignment="1" min="-2" pref="357" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="CloseWindow" min="-2" max="-2" attributes="0"/>
