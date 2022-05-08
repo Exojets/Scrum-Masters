@@ -29,28 +29,33 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                  <Component id="RoomSelectInput" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="CreditCardEntry" alignment="0" pref="208" max="32767" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="142" max="32767" attributes="0"/>
+                              <Component id="ReservationSuccessorFail" min="-2" pref="201" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <Component id="MonthReserveInput" min="-2" pref="66" max="-2" attributes="0"/>
                                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                       <Component id="DayReserveInput" min="-2" pref="89" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="MonthCancelInput" min="-2" max="-2" attributes="0"/>
+                                      <Component id="MonthCancelInput" min="-2" pref="118" max="-2" attributes="0"/>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                                      <Component id="DayCancelInput" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DayCancelInput" min="-2" pref="107" max="-2" attributes="0"/>
                                   </Group>
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="RoomReserveButton" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="ChangeReservationDate" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="RoomCancelButton" alignment="0" min="-2" pref="160" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="0" pref="315" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="RoomSelectInput" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="ChangeReservationDate" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="CreditCardEntry" alignment="0" pref="208" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace pref="78" max="32767" attributes="0"/>
-                              <Component id="ReservationSuccessorFail" min="-2" pref="201" max="-2" attributes="0"/>
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -63,16 +68,12 @@
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                              <Component id="RoomCancelButton" alignment="0" pref="160" max="32767" attributes="0"/>
-                              <Component id="RoomSelectCancelInput" alignment="0" max="32767" attributes="0"/>
-                          </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="RoomReserveButton" min="-2" pref="138" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="215" max="-2" attributes="0"/>
                               <Component id="WelcomeLabel" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
+                          <Component id="RoomSelectCancelInput" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -85,11 +86,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="WelcomeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="RoomReserveButton" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+              <Component id="WelcomeLabel" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
@@ -117,7 +115,10 @@
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="ChangeReservationDate" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="ChangeReservationDate" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="RoomReserveButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="MonthCancelInput" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -125,7 +126,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="RoomSelectCancelInput" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="9" max="32767" attributes="0"/>
+                      <EmptySpace pref="12" max="32767" attributes="0"/>
                       <Component id="RoomCancelButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
