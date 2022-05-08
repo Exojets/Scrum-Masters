@@ -21,8 +21,13 @@ public class LoginPage extends javax.swing.JFrame {
     /**
      * Creates new form login
      */
+    
+    private Boolean usernameClicked = false, passwordClicked = false;
+    
     public LoginPage() {
         initComponents();
+        jPasswordField1.setEchoChar((char)0);
+        LoginAndRegistration.requestFocusInWindow();
         RegisterSuccessNotify.setVisible(false);
     }
 
@@ -41,10 +46,16 @@ public class LoginPage extends javax.swing.JFrame {
         LoginAndRegistration = new javax.swing.JLabel();
         RegisterButton = new javax.swing.JButton();
         RegisterSuccessNotify = new javax.swing.JLabel();
+        jPasswordField1 = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         UsernameField.setText("Username");
+        UsernameField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                UsernameFieldMouseClicked(evt);
+            }
+        });
         UsernameField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 UsernameFieldActionPerformed(evt);
@@ -71,6 +82,8 @@ public class LoginPage extends javax.swing.JFrame {
 
         RegisterSuccessNotify.setText("Account Created!");
 
+        jPasswordField1.setText("Password");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -84,14 +97,16 @@ public class LoginPage extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(12, 12, 12)
                         .addComponent(LoginAndRegistration))
                     .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addComponent(RegisterSuccessNotify)))
+                        .addComponent(RegisterSuccessNotify))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(PasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
                 .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
@@ -103,7 +118,9 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(43, 43, 43)
                 .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(RegisterSuccessNotify)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -187,6 +204,13 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_RegisterButtonActionPerformed
 
+    private void UsernameFieldMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsernameFieldMouseClicked
+        if(!usernameClicked){
+            UsernameField.setText("");
+            usernameClicked = true;
+        }
+    }//GEN-LAST:event_UsernameFieldMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -230,5 +254,6 @@ public class LoginPage extends javax.swing.JFrame {
     private javax.swing.JButton RegisterButton;
     private javax.swing.JLabel RegisterSuccessNotify;
     private javax.swing.JTextField UsernameField;
+    private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
