@@ -1,5 +1,6 @@
 MainPage$1.class
 MainPage$14.class
+LoginPage$6.class
 RoomDetails$2.class
 Room.class
 Notifications.class
@@ -19,9 +20,11 @@ MainPage$2.class
 RoomDetails.class
 MainPage$13.class
 RoomDetails$1.class
+RoomDetails$5.class
 MainPage$4.class
 MainPage$10.class
 MainPage$9.class
 ReservationSystem.class
+LoginPage$5.class
 MainPage$6.class
 MainPage$12.class

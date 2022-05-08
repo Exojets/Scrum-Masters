@@ -159,7 +159,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        ChangeReservationDate.setText("ChangeReservation");
+        ChangeReservationDate.setText("Change Reservation");
         ChangeReservationDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ChangeReservationDateActionPerformed(evt);
