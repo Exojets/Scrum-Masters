@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.Desktop;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -25,6 +26,8 @@ public class MainPage extends javax.swing.JFrame {
      Room Room3;
      ReservationSystem Reserver;
      
+     private Boolean monthReserveClicked = false, dayReserveClicked = false, roomSelectClicked = false, monthCancelClicked = false, dayCancelClicked = false, roomSelectCancelClicked = false, creditCardClicked = false;
+     
     public MainPage() {
         initComponents();
     }
@@ -39,6 +42,7 @@ public class MainPage extends javax.swing.JFrame {
         if (!User.managerFlagGet()){
           ManagerReportButton.setVisible(false);
         }
+        WelcomeLabel.requestFocusInWindow();
     }
 
     /**
@@ -101,6 +105,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         MonthReserveInput.setText("Month");
+        MonthReserveInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MonthReserveInputMouseClicked(evt);
+            }
+        });
         MonthReserveInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MonthReserveInputActionPerformed(evt);
@@ -108,6 +117,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         DayReserveInput.setText("Day");
+        DayReserveInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DayReserveInputMouseClicked(evt);
+            }
+        });
         DayReserveInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DayReserveInputActionPerformed(evt);
@@ -115,6 +129,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         MonthCancelInput.setText("Month to Cancel");
+        MonthCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                MonthCancelInputMouseClicked(evt);
+            }
+        });
         MonthCancelInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MonthCancelInputActionPerformed(evt);
@@ -122,6 +141,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         DayCancelInput.setText("Day to Cancel");
+        DayCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                DayCancelInputMouseClicked(evt);
+            }
+        });
         DayCancelInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DayCancelInputActionPerformed(evt);
@@ -142,7 +166,12 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
 
-        RoomSelectCancelInput.setText("NumbertoCancel");
+        RoomSelectCancelInput.setText("Number to Cancel");
+        RoomSelectCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RoomSelectCancelInputMouseClicked(evt);
+            }
+        });
         RoomSelectCancelInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RoomSelectCancelInputActionPerformed(evt);
@@ -150,6 +179,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         RoomSelectInput.setText("Room Reservation Code");
+        RoomSelectInput.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                RoomSelectInputMouseClicked(evt);
+            }
+        });
         RoomSelectInput.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RoomSelectInputActionPerformed(evt);
@@ -159,6 +193,11 @@ public class MainPage extends javax.swing.JFrame {
         ReservationSuccessorFail.setText(" ");
 
         CreditCardEntry.setText("Credit card number. no spaces or -");
+        CreditCardEntry.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CreditCardEntryMouseClicked(evt);
+            }
+        });
         CreditCardEntry.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CreditCardEntryActionPerformed(evt);
@@ -185,22 +224,26 @@ public class MainPage extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(RoomSelectInput, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(CreditCardEntry, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
+                                .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(MonthReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(DayReserveInput, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 315, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(RoomSelectInput, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ChangeReservationDate, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CreditCardEntry, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 208, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
-                                .addComponent(ReservationSuccessorFail, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(RoomReserveButton)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(ChangeReservationDate))
+                                    .addComponent(RoomCancelButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(SearchRoomButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -209,14 +252,11 @@ public class MainPage extends javax.swing.JFrame {
                             .addComponent(RoomDetailChoiceBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(RoomCancelButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.Alignment.LEADING))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(RoomReserveButton, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(77, 77, 77)
+                                .addGap(215, 215, 215)
                                 .addComponent(WelcomeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -224,10 +264,8 @@ public class MainPage extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(WelcomeLabel)
-                    .addComponent(RoomReserveButton))
-                .addGap(7, 7, 7)
+                .addComponent(WelcomeLabel)
+                .addGap(10, 10, 10)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -249,14 +287,16 @@ public class MainPage extends javax.swing.JFrame {
                         .addComponent(ManagerReportButton)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(ChangeReservationDate)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ChangeReservationDate)
+                            .addComponent(RoomReserveButton))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(MonthCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(DayCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(RoomSelectCancelInput, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                         .addComponent(RoomCancelButton)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -513,10 +553,60 @@ public class MainPage extends javax.swing.JFrame {
              //appends total profits
              myWriter.write("The total profits are: $"+Total);
              myWriter.close();
+             Desktop.getDesktop().open(ReportFile);
          } catch (IOException ex) {
              Logger.getLogger(MainPage.class.getName()).log(Level.SEVERE, null, ex);
          }
     }//GEN-LAST:event_ManagerReportButtonActionPerformed
+
+    private void MonthReserveInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthReserveInputMouseClicked
+        if(!monthReserveClicked){
+            MonthReserveInput.setText("");
+            monthReserveClicked = true;
+        }
+    }//GEN-LAST:event_MonthReserveInputMouseClicked
+
+    private void DayReserveInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DayReserveInputMouseClicked
+        if(!dayReserveClicked){
+            DayReserveInput.setText("");
+            dayReserveClicked = true;
+        }
+    }//GEN-LAST:event_DayReserveInputMouseClicked
+
+    private void RoomSelectInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomSelectInputMouseClicked
+        if(!roomSelectClicked){
+            RoomSelectInput.setText("");
+            roomSelectClicked = true;
+        }
+    }//GEN-LAST:event_RoomSelectInputMouseClicked
+
+    private void MonthCancelInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthCancelInputMouseClicked
+        if(!monthCancelClicked){
+            MonthCancelInput.setText("");
+            monthCancelClicked = true;
+        }
+    }//GEN-LAST:event_MonthCancelInputMouseClicked
+
+    private void DayCancelInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DayCancelInputMouseClicked
+        if(!dayCancelClicked){
+            DayCancelInput.setText("");
+            dayCancelClicked = true;
+        }
+    }//GEN-LAST:event_DayCancelInputMouseClicked
+
+    private void RoomSelectCancelInputMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomSelectCancelInputMouseClicked
+        if(!roomSelectCancelClicked){
+            RoomSelectCancelInput.setText("");
+            roomSelectCancelClicked = true;
+        }
+    }//GEN-LAST:event_RoomSelectCancelInputMouseClicked
+
+    private void CreditCardEntryMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreditCardEntryMouseClicked
+        if(!creditCardClicked){
+            CreditCardEntry.setText("");
+            creditCardClicked = true;
+        }
+    }//GEN-LAST:event_CreditCardEntryMouseClicked
 
     /**
      * @param args the command line arguments
