@@ -7,6 +7,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.event.*;
 
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -17,7 +18,7 @@ import java.util.logging.Logger;
  *
  * @author Groe
  */
-public class LoginPage extends javax.swing.JFrame {
+public class LoginPage extends javax.swing.JFrame implements ItemListener {
     /**
      * Creates new form login
      */
@@ -29,6 +30,12 @@ public class LoginPage extends javax.swing.JFrame {
         jPasswordField1.setEchoChar((char)0);
         LoginAndRegistration.requestFocusInWindow();
         RegisterSuccessNotify.setVisible(false);
+        jCheckBox1.addItemListener((ItemEvent e) -> {
+            if (e.getStateChange() == 1)
+                jPasswordField1.setEchoChar((char)0);
+            else
+                jPasswordField1.setEchoChar('•');
+        });
     }
 
     /**
@@ -41,12 +48,12 @@ public class LoginPage extends javax.swing.JFrame {
     private void initComponents() {
 
         UsernameField = new javax.swing.JTextField();
-        PasswordField = new javax.swing.JTextField();
         LoginButton = new javax.swing.JButton();
         LoginAndRegistration = new javax.swing.JLabel();
         RegisterButton = new javax.swing.JButton();
         RegisterSuccessNotify = new javax.swing.JLabel();
         jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,8 +68,6 @@ public class LoginPage extends javax.swing.JFrame {
                 UsernameFieldActionPerformed(evt);
             }
         });
-
-        PasswordField.setText("Password");
 
         LoginButton.setText("Login");
         LoginButton.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +88,13 @@ public class LoginPage extends javax.swing.JFrame {
         RegisterSuccessNotify.setText("Account Created!");
 
         jPasswordField1.setText("Password");
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jPasswordField1MouseClicked(evt);
+            }
+        });
+
+        jCheckBox1.setText("Show Password");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -101,12 +113,13 @@ public class LoginPage extends javax.swing.JFrame {
                         .addGap(12, 12, 12)
                         .addComponent(LoginAndRegistration))
                     .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addComponent(RegisterSuccessNotify))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(jPasswordField1, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(PasswordField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jCheckBox1)))
                 .addGap(108, 108, 108))
         );
         layout.setVerticalGroup(
@@ -116,11 +129,11 @@ public class LoginPage extends javax.swing.JFrame {
                 .addComponent(LoginAndRegistration)
                 .addGap(48, 48, 48)
                 .addComponent(UsernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(PasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(26, 26, 26)
                 .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
                 .addComponent(RegisterSuccessNotify)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -135,7 +148,7 @@ public class LoginPage extends javax.swing.JFrame {
     private void LoginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginButtonActionPerformed
         // retrieves username and password from fields
          String Username=UsernameField.getText();
-        String Password=PasswordField.getText();
+        String Password=jPasswordField1.getText();
         //ensures that username and password fields weren't empty
         if (Username.length()>0&&Password.length()>0){
            String Filer=Username+".txt";
@@ -177,7 +190,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         //gets the username and password fields 
         String Username=UsernameField.getText();
-        String Password=PasswordField.getText();
+        String Password=jPasswordField1.getText();
         //
         if (Username.length()>0&&Password.length()>0){
             try {
@@ -211,6 +224,26 @@ public class LoginPage extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_UsernameFieldMouseClicked
 
+    private void jPasswordField1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MouseClicked
+        if(!passwordClicked){
+            jPasswordField1.setText("");
+            if(!jCheckBox1.isSelected())
+                jPasswordField1.setEchoChar('•');
+            passwordClicked = true;
+        }
+    }//GEN-LAST:event_jPasswordField1MouseClicked
+
+    @Override
+    public void itemStateChanged(ItemEvent e)
+    {
+        if (e.getSource() == jCheckBox1) {
+            if (e.getStateChange() == 1)
+                jPasswordField1.setEchoChar((char)0);
+            else
+                jPasswordField1.setEchoChar('•');
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -250,10 +283,10 @@ public class LoginPage extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel LoginAndRegistration;
     private javax.swing.JButton LoginButton;
-    private javax.swing.JTextField PasswordField;
     private javax.swing.JButton RegisterButton;
     private javax.swing.JLabel RegisterSuccessNotify;
     private javax.swing.JTextField UsernameField;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPasswordField jPasswordField1;
     // End of variables declaration//GEN-END:variables
 }
