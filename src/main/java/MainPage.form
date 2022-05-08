@@ -73,7 +73,7 @@
                               <Component id="WelcomeLabel" min="-2" pref="60" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" pref="243" max="-2" attributes="0"/>
-                          <Component id="RoomSelectCancelInput" alignment="0" min="-2" pref="118" max="-2" attributes="0"/>
+                          <Component id="RoomSelectCancelInput" alignment="0" min="-2" pref="134" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
@@ -183,6 +183,7 @@
         <Property name="text" type="java.lang.String" value="Month"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MonthReserveInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonthReserveInputActionPerformed"/>
       </Events>
     </Component>
@@ -191,6 +192,7 @@
         <Property name="text" type="java.lang.String" value="Day"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DayReserveInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DayReserveInputActionPerformed"/>
       </Events>
     </Component>
@@ -199,6 +201,7 @@
         <Property name="text" type="java.lang.String" value="Month to Cancel"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="MonthCancelInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MonthCancelInputActionPerformed"/>
       </Events>
     </Component>
@@ -207,6 +210,7 @@
         <Property name="text" type="java.lang.String" value="Day to Cancel"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="DayCancelInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DayCancelInputActionPerformed"/>
       </Events>
     </Component>
@@ -228,9 +232,10 @@
     </Component>
     <Component class="javax.swing.JTextField" name="RoomSelectCancelInput">
       <Properties>
-        <Property name="text" type="java.lang.String" value="NumbertoCancel"/>
+        <Property name="text" type="java.lang.String" value="Number to Cancel"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RoomSelectCancelInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomSelectCancelInputActionPerformed"/>
       </Events>
     </Component>
@@ -239,6 +244,7 @@
         <Property name="text" type="java.lang.String" value="Room Reservation Code"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="RoomSelectInputMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RoomSelectInputActionPerformed"/>
       </Events>
     </Component>
@@ -252,6 +258,7 @@
         <Property name="text" type="java.lang.String" value="Credit card number. no spaces or -"/>
       </Properties>
       <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="CreditCardEntryMouseClicked"/>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="CreditCardEntryActionPerformed"/>
       </Events>
     </Component>

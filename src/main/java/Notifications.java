@@ -43,19 +43,23 @@ public class Notifications extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(16);
         jTextArea1.setRows(5);
         jScrollPane4.setViewportView(jTextArea1);
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
+        jTextArea3.setEditable(false);
         jTextArea3.setColumns(16);
         jTextArea3.setRows(5);
         jTextArea3.setText("\n\n             Reservations");
         jScrollPane5.setViewportView(jTextArea3);
 
+        jTextArea4.setEditable(false);
         jTextArea4.setColumns(20);
         jTextArea4.setRows(5);
         jTextArea4.setText("\n\n                               Notifications");
