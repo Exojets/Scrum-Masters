@@ -58,6 +58,11 @@ public class LoginPage extends javax.swing.JFrame implements ItemListener {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         UsernameField.setText("Username");
+        UsernameField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                UsernameFieldMouseDragged(evt);
+            }
+        });
         UsernameField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 UsernameFieldMouseClicked(evt);
@@ -88,6 +93,11 @@ public class LoginPage extends javax.swing.JFrame implements ItemListener {
         RegisterSuccessNotify.setText("Account Created!");
 
         PasswordField.setText("Password");
+        PasswordField.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                PasswordFieldMouseDragged(evt);
+            }
+        });
         PasswordField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 PasswordFieldMouseClicked(evt);
@@ -232,6 +242,22 @@ public class LoginPage extends javax.swing.JFrame implements ItemListener {
             passwordClicked = true;
         }
     }//GEN-LAST:event_PasswordFieldMouseClicked
+
+    private void PasswordFieldMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_PasswordFieldMouseDragged
+        if(!passwordClicked){
+            PasswordField.setText("");
+            if(!CheckBox.isSelected())
+                PasswordField.setEchoChar('•');
+            passwordClicked = true;
+        }
+    }//GEN-LAST:event_PasswordFieldMouseDragged
+
+    private void UsernameFieldMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_UsernameFieldMouseDragged
+        if(!usernameClicked){
+            UsernameField.setText("");
+            usernameClicked = true;
+        }
+    }//GEN-LAST:event_UsernameFieldMouseDragged
 
     @Override
     public void itemStateChanged(ItemEvent e)

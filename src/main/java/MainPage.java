@@ -105,6 +105,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         MonthReserveInput.setText("Month");
+        MonthReserveInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                MonthReserveInputMouseDragged(evt);
+            }
+        });
         MonthReserveInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MonthReserveInputMouseClicked(evt);
@@ -117,6 +122,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         DayReserveInput.setText("Day");
+        DayReserveInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                DayReserveInputMouseDragged(evt);
+            }
+        });
         DayReserveInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DayReserveInputMouseClicked(evt);
@@ -129,6 +139,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         MonthCancelInput.setText("Month to Cancel");
+        MonthCancelInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                MonthCancelInputMouseDragged(evt);
+            }
+        });
         MonthCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MonthCancelInputMouseClicked(evt);
@@ -141,6 +156,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         DayCancelInput.setText("Day to Cancel");
+        DayCancelInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                DayCancelInputMouseDragged(evt);
+            }
+        });
         DayCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DayCancelInputMouseClicked(evt);
@@ -167,6 +187,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         RoomSelectCancelInput.setText("Number to Cancel");
+        RoomSelectCancelInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                RoomSelectCancelInputMouseDragged(evt);
+            }
+        });
         RoomSelectCancelInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RoomSelectCancelInputMouseClicked(evt);
@@ -179,6 +204,11 @@ public class MainPage extends javax.swing.JFrame {
         });
 
         RoomSelectInput.setText("Room Reservation Code");
+        RoomSelectInput.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                RoomSelectInputMouseDragged(evt);
+            }
+        });
         RoomSelectInput.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 RoomSelectInputMouseClicked(evt);
@@ -193,6 +223,11 @@ public class MainPage extends javax.swing.JFrame {
         ReservationSuccessorFail.setText(" ");
 
         CreditCardEntry.setText("Credit card number. no spaces or -");
+        CreditCardEntry.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                CreditCardEntryMouseDragged(evt);
+            }
+        });
         CreditCardEntry.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 CreditCardEntryMouseClicked(evt);
@@ -607,6 +642,55 @@ public class MainPage extends javax.swing.JFrame {
             creditCardClicked = true;
         }
     }//GEN-LAST:event_CreditCardEntryMouseClicked
+
+    private void MonthReserveInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthReserveInputMouseDragged
+        if(!monthReserveClicked){
+            MonthReserveInput.setText("");
+            monthReserveClicked = true;
+        }
+    }//GEN-LAST:event_MonthReserveInputMouseDragged
+
+    private void DayReserveInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DayReserveInputMouseDragged
+        if(!dayReserveClicked){
+            DayReserveInput.setText("");
+            dayReserveClicked = true;
+        }
+    }//GEN-LAST:event_DayReserveInputMouseDragged
+
+    private void RoomSelectInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomSelectInputMouseDragged
+        if(!roomSelectClicked){
+            RoomSelectInput.setText("");
+            roomSelectClicked = true;
+        }
+    }//GEN-LAST:event_RoomSelectInputMouseDragged
+
+    private void MonthCancelInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthCancelInputMouseDragged
+        if(!monthCancelClicked){
+            MonthCancelInput.setText("");
+            monthCancelClicked = true;
+        }
+    }//GEN-LAST:event_MonthCancelInputMouseDragged
+
+    private void DayCancelInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DayCancelInputMouseDragged
+        if(!dayCancelClicked){
+            DayCancelInput.setText("");
+            dayCancelClicked = true;
+        }
+    }//GEN-LAST:event_DayCancelInputMouseDragged
+
+    private void RoomSelectCancelInputMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RoomSelectCancelInputMouseDragged
+        if(!roomSelectCancelClicked){
+            RoomSelectCancelInput.setText("");
+            roomSelectCancelClicked = true;
+        }
+    }//GEN-LAST:event_RoomSelectCancelInputMouseDragged
+
+    private void CreditCardEntryMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CreditCardEntryMouseDragged
+        if(!creditCardClicked){
+            CreditCardEntry.setText("");
+            creditCardClicked = true;
+        }
+    }//GEN-LAST:event_CreditCardEntryMouseDragged
 
     /**
      * @param args the command line arguments

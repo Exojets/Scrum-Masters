@@ -151,6 +151,11 @@ public class RoomDetails extends javax.swing.JFrame {
         });
 
         MonthDesired.setText("Desired Month");
+        MonthDesired.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                MonthDesiredMouseDragged(evt);
+            }
+        });
         MonthDesired.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 MonthDesiredMouseClicked(evt);
@@ -444,6 +449,13 @@ public class RoomDetails extends javax.swing.JFrame {
             monthDesiredClicked = true;
         }
     }//GEN-LAST:event_MonthDesiredMouseClicked
+
+    private void MonthDesiredMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MonthDesiredMouseDragged
+        if(!monthDesiredClicked){
+            MonthDesired.setText("");
+            monthDesiredClicked = true;
+        }
+    }//GEN-LAST:event_MonthDesiredMouseDragged
 
     /**
      * @param args the command line arguments
