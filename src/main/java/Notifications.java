@@ -17,8 +17,8 @@ public class Notifications extends javax.swing.JFrame {
     }
     public Notifications(String Notifications, String Reservations) {
         initComponents();
-        jTextArea2.setText(Notifications);
-        jTextArea1.setText(Reservations);
+        NotificationsDisplay.setText(Notifications);
+        ReservationsDisplay.setText(Reservations);
         
     }
 
@@ -31,39 +31,39 @@ public class Notifications extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextArea3 = new javax.swing.JTextArea();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jTextArea4 = new javax.swing.JTextArea();
+        ReservationsDisplayPane = new javax.swing.JScrollPane();
+        ReservationsDisplay = new javax.swing.JTextArea();
+        NotificationsDisplayPane = new javax.swing.JScrollPane();
+        NotificationsDisplay = new javax.swing.JTextArea();
+        ReservationsIndicatorPane = new javax.swing.JScrollPane();
+        ReservationsIndicator = new javax.swing.JTextArea();
+        NotificationsIndicatorPane = new javax.swing.JScrollPane();
+        NotificationsIndicatorArea = new javax.swing.JTextArea();
         CloseWindow = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(16);
-        jTextArea1.setRows(5);
-        jScrollPane4.setViewportView(jTextArea1);
+        ReservationsDisplay.setEditable(false);
+        ReservationsDisplay.setColumns(16);
+        ReservationsDisplay.setRows(5);
+        ReservationsDisplayPane.setViewportView(ReservationsDisplay);
 
-        jTextArea2.setEditable(false);
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        NotificationsDisplay.setEditable(false);
+        NotificationsDisplay.setColumns(20);
+        NotificationsDisplay.setRows(5);
+        NotificationsDisplayPane.setViewportView(NotificationsDisplay);
 
-        jTextArea3.setEditable(false);
-        jTextArea3.setColumns(16);
-        jTextArea3.setRows(5);
-        jTextArea3.setText("\n\n             Reservations");
-        jScrollPane5.setViewportView(jTextArea3);
+        ReservationsIndicator.setEditable(false);
+        ReservationsIndicator.setColumns(16);
+        ReservationsIndicator.setRows(5);
+        ReservationsIndicator.setText("\n\n             Reservations");
+        ReservationsIndicatorPane.setViewportView(ReservationsIndicator);
 
-        jTextArea4.setEditable(false);
-        jTextArea4.setColumns(20);
-        jTextArea4.setRows(5);
-        jTextArea4.setText("\n\n                               Notifications");
-        jScrollPane6.setViewportView(jTextArea4);
+        NotificationsIndicatorArea.setEditable(false);
+        NotificationsIndicatorArea.setColumns(20);
+        NotificationsIndicatorArea.setRows(5);
+        NotificationsIndicatorArea.setText("\n\n                               Notifications");
+        NotificationsIndicatorPane.setViewportView(NotificationsIndicatorArea);
 
         CloseWindow.setText("Close");
         CloseWindow.addActionListener(new java.awt.event.ActionListener() {
@@ -79,12 +79,12 @@ public class Notifications extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ReservationsIndicatorPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReservationsDisplayPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                    .addComponent(jScrollPane6))
+                    .addComponent(NotificationsDisplayPane, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
+                    .addComponent(NotificationsIndicatorPane))
                 .addGap(26, 26, 26)
                 .addComponent(CloseWindow)
                 .addContainerGap())
@@ -94,13 +94,13 @@ public class Notifications extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ReservationsIndicatorPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(NotificationsIndicatorPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(CloseWindow))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                    .addComponent(jScrollPane3))
+                    .addComponent(ReservationsDisplayPane, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                    .addComponent(NotificationsDisplayPane))
                 .addContainerGap())
         );
 
@@ -149,13 +149,13 @@ public class Notifications extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CloseWindow;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JTextArea jTextArea3;
-    private javax.swing.JTextArea jTextArea4;
+    private javax.swing.JTextArea NotificationsDisplay;
+    private javax.swing.JScrollPane NotificationsDisplayPane;
+    private javax.swing.JTextArea NotificationsIndicatorArea;
+    private javax.swing.JScrollPane NotificationsIndicatorPane;
+    private javax.swing.JTextArea ReservationsDisplay;
+    private javax.swing.JScrollPane ReservationsDisplayPane;
+    private javax.swing.JTextArea ReservationsIndicator;
+    private javax.swing.JScrollPane ReservationsIndicatorPane;
     // End of variables declaration//GEN-END:variables
 }

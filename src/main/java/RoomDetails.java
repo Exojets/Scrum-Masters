@@ -36,13 +36,13 @@ public class RoomDetails extends javax.swing.JFrame {
             RoomType="Opulent Room";
         initComponents();
         ReservationCodeDisplay.setText("Reservation Code is: "+RoomTypeSet);
-        jLabel1.setText(RoomType);
-        jTextArea1.setText(RoomtoUse.amenitiesGet());
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setWrapStyleWord(true);
+        RoomName.setText(RoomType);
+        RoomDescription.setText(RoomtoUse.amenitiesGet());
+        RoomDescription.setLineWrap(true);
+        RoomDescription.setWrapStyleWord(true);
         int PriceTextAsInt=RoomtoUse.costGet();
         String PriceText=String.valueOf(PriceTextAsInt);
-        jLabel34.setText("$" + PriceText);
+        Price.setText("$" + PriceText);
         //initialize labels. This unfortunately cannot be done in fewer lines when using the WYSIWIG generator 
         Labels[0]=jLabel3;
         Labels[1]=jLabel4;
@@ -89,8 +89,8 @@ public class RoomDetails extends javax.swing.JFrame {
     private void initComponents() {
 
         Close = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        RoomName = new javax.swing.JLabel();
+        PerNight = new javax.swing.JLabel();
         UpdateAvailability = new javax.swing.JButton();
         MonthDesired = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
@@ -124,10 +124,10 @@ public class RoomDetails extends javax.swing.JFrame {
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
+        Price = new javax.swing.JLabel();
+        RoomDescriptionScroll = new javax.swing.JScrollPane();
+        RoomDescription = new javax.swing.JTextArea();
+        ReservationCodeScroll = new javax.swing.JScrollPane();
         ReservationCodeDisplay = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -139,9 +139,9 @@ public class RoomDetails extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Opulent Room");
+        RoomName.setText("Opulent Room");
 
-        jLabel2.setText("/ night");
+        PerNight.setText("/ night");
 
         UpdateAvailability.setText("Check Availability");
         UpdateAvailability.addActionListener(new java.awt.event.ActionListener() {
@@ -229,15 +229,15 @@ public class RoomDetails extends javax.swing.JFrame {
 
         jLabel33.setText("31");
 
-        jLabel34.setText("5000");
+        Price.setText("5000");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(4);
-        jScrollPane1.setViewportView(jTextArea1);
+        RoomDescription.setColumns(20);
+        RoomDescription.setRows(4);
+        RoomDescriptionScroll.setViewportView(RoomDescription);
 
         ReservationCodeDisplay.setColumns(20);
         ReservationCodeDisplay.setRows(2);
-        jScrollPane3.setViewportView(ReservationCodeDisplay);
+        ReservationCodeScroll.setViewportView(ReservationCodeDisplay);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -245,7 +245,7 @@ public class RoomDetails extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RoomName, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 459, Short.MAX_VALUE)
                 .addComponent(Close)
                 .addGap(44, 44, 44))
@@ -253,18 +253,18 @@ public class RoomDetails extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(14, 14, 14)
-                        .addComponent(jLabel34, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(Price, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2))
+                        .addComponent(PerNight))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(MonthDesired, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(UpdateAvailability, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(ReservationCodeScroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(RoomDescriptionScroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(12, 12, 12))
             .addGroup(layout.createSequentialGroup()
                 .addGap(14, 14, 14)
@@ -342,23 +342,23 @@ public class RoomDetails extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Close)
-                    .addComponent(jLabel1))
+                    .addComponent(RoomName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(RoomDescriptionScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(PerNight, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Price, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(MonthDesired, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(UpdateAvailability)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ReservationCodeScroll, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -496,9 +496,14 @@ public class RoomDetails extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Close;
     private javax.swing.JTextField MonthDesired;
+    private javax.swing.JLabel PerNight;
+    private javax.swing.JLabel Price;
     private javax.swing.JTextArea ReservationCodeDisplay;
+    private javax.swing.JScrollPane ReservationCodeScroll;
+    private javax.swing.JTextArea RoomDescription;
+    private javax.swing.JScrollPane RoomDescriptionScroll;
+    private javax.swing.JLabel RoomName;
     private javax.swing.JButton UpdateAvailability;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -509,7 +514,6 @@ public class RoomDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
@@ -525,15 +529,11 @@ public class RoomDetails extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }
